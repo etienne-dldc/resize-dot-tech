@@ -1,6 +1,6 @@
 import styled from 'react-emotion';
 
-const Wrapper = styled('div')({
+export const Wrapper = styled('div')({
   display: 'flex',
   flexDirection: 'row',
   height: '100%',
@@ -32,4 +32,14 @@ const Wrapper = styled('div')({
   },
 });
 
-export default Wrapper;
+export const Column = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'stretch',
+  '& > *': {
+    marginBottom: 20,
+    '&:last-child': {
+      marginBottom: 0,
+    },
+  },
+});

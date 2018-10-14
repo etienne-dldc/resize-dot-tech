@@ -1,4 +1,5 @@
 import styled from 'react-emotion';
+import ColorBox from '../ColorBox/inex';
 
 const Box = styled('div')({
   display: 'flex',
@@ -12,6 +13,14 @@ const Box = styled('div')({
   ':hover': {
     boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)',
   },
+});
+
+export const BoxHeader = styled(ColorBox)({
+  height: 50,
+  padding: '10px 20px',
+  alignItems: 'center',
+  textTransform: 'uppercase',
+  fontWeight: 400,
 });
 
 export default Box;

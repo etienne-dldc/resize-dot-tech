@@ -1,7 +1,7 @@
 import styled from 'react-emotion';
-import ColorBox from './ColorBox';
+import ColorBox from '../ColorBox/inex';
 
-const DropBox = styled(ColorBox)({
+export const DropBox = styled(ColorBox)({
   flexDirection: 'column',
   height: 100,
   alignItems: 'stretch',
@@ -21,4 +21,7 @@ const DropBox = styled(ColorBox)({
   },
 });
 
-export default DropBox;
+export const DropText = styled('p')({
+  margin: 0,
+  textAlign: 'center',
+});

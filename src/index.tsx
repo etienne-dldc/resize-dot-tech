@@ -1,6 +1,8 @@
 import 'normalize.css';
 import 'milligram';
 
+import 'rc-slider/assets/index.css';
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { injectGlobal } from 'emotion';

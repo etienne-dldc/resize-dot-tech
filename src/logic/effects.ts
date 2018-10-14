@@ -87,7 +87,7 @@ function resize(file: FileWithInfo, settings: StateSettings): Promise<Blob> {
         resolve(output);
       },
       settings.type,
-      settings.quality
+      settings.quality / 100
     );
   });
 }

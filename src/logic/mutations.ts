@@ -1,5 +1,5 @@
 import { Mutate } from 'overmind';
-import { StateImageId, StateImage } from './state';
+import { StateImageId, StateImage, OutputMimeType } from './state';
 
 export const removeImage: Mutate<StateImageId> = ({ state, value: fileId }) => {
   const file = state.files.find(f => f.id === fileId);
@@ -10,4 +10,12 @@ export const removeImage: Mutate<StateImageId> = ({ state, value: fileId }) => {
 
 export const addImages: Mutate<Array<StateImage>> = ({ state, value: files }) => {
   state.files.push(...files);
+};
+
+export const setSettingType: Mutate<OutputMimeType> = ({ state, value }) => {
+  state.settings.type = value;
+};
+
+export const setSettingQuality: Mutate<number> = ({ state, value }) => {
+  state.settings.quality = value;
 };

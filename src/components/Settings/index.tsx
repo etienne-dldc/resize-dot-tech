@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { connect, ConnectProps } from 'src/logic';
-import Box from './Box';
-import Header from './Header';
+import Box, { BoxHeader } from '../Box';
 import { OutputMimeType } from 'src/logic/state';
-// import Slider from 'rc-slider';
+import Slider from 'rc-slider';
+import { SliderWrapper } from './elements';
 
 type Props = ConnectProps;
 
@@ -12,23 +12,30 @@ class Settings extends React.PureComponent<Props> {
     const { app } = this.props;
     return (
       <Box>
-        <Header gradient="pink">settings</Header>
+        <BoxHeader gradient="pink">settings</BoxHeader>
         <p>Format</p>
         {[OutputMimeType.jpeg, OutputMimeType.png, OutputMimeType.webp].map(k => {
           const onClick = () => {
-            // this.setState(prevState => ({ ...prevState, settings: { ...prevState.settings, type: k } }));
+            this.onTypeSelected(k);
           };
           return (
-            // tslint:disable-next-line:jsx-no-lambda
             <div key={k} onClick={onClick}>
               {k === app.state.settings.type && ' > '}
               {k}
             </div>
           );
         })}
+        <SliderWrapper>
+          <p>Quality: {app.state.settings.quality}%</p>
+          <Slider value={app.state.settings.quality} min={25} max={100} onChange={app.actions.setOutputQuality} />
+        </SliderWrapper>
       </Box>
     );
   }
+
+  private onTypeSelected = (type: OutputMimeType) => {
+    this.props.app.actions.setOutputType(type);
+  };
 }
 
 export default connect(Settings);

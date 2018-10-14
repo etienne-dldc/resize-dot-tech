@@ -35,7 +35,7 @@ const state: State = {
   files: [],
   settings: {
     type: OutputMimeType.jpeg,
-    quality: 0.9,
+    quality: 90,
   },
 };
 
