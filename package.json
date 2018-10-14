@@ -10,6 +10,7 @@
     "normalize.css": "^8.0.0",
     "overmind": "^4.0.0-1539461411754",
     "overmind-react": "^4.0.0-1539461411754",
+    "rc-input-number": "^4.3.0",
     "rc-slider": "^8.6.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",

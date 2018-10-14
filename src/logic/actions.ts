@@ -13,3 +13,4 @@ export const processAndDowloadZip: Action = ({ run }) => run(operations.dowloadZ
 
 export const setOutputType: Action<OutputMimeType> = ({ mutate }) => mutate(mutations.setSettingType);
 export const setOutputQuality: Action<number> = ({ mutate }) => mutate(mutations.setSettingQuality);
+export const setOutputMaxSize: Action<number> = ({ mutate }) => mutate(mutations.setSettingMaxSize);

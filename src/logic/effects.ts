@@ -57,17 +57,17 @@ function getImageInfo(file: FileWithContent): Promise<FileWithInfo> {
   });
 }
 
-function getNewSize(width: number, height: number): { width: number; height: number } {
-  if (width < 1600 && height < 1600) {
+function getNewSize(width: number, height: number, max: number): { width: number; height: number } {
+  if (width < max && height < max) {
     return { width, height };
   }
-  const scale = width > height ? 1600 / width : 1600 / height;
+  const scale = max / Math.max(width, height);
   return { width: width * scale, height: height * scale };
 }
 
 function resize(file: FileWithInfo, settings: StateSettings): Promise<Blob> {
   return new Promise((resolve, reject) => {
-    const { height, width } = getNewSize(file.width, file.height);
+    const { height, width } = getNewSize(file.width, file.height, settings.maxSize);
     const elem = document.createElement('canvas');
     elem.width = width;
     elem.height = height;

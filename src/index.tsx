@@ -2,6 +2,7 @@ import 'normalize.css';
 import 'milligram';
 
 import 'rc-slider/assets/index.css';
+import 'rc-input-number/assets/index.css';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';

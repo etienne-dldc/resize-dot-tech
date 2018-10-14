@@ -3,6 +3,7 @@ import { connect, ConnectProps } from 'src/logic';
 import Box, { BoxHeader } from '../Box';
 import { OutputMimeType } from 'src/logic/state';
 import Slider from 'rc-slider';
+import InputNum from 'rc-input-number';
 import { SliderWrapper } from './elements';
 
 type Props = ConnectProps;
@@ -25,6 +26,8 @@ class Settings extends React.PureComponent<Props> {
             </div>
           );
         })}
+        <p>Max Size</p>
+        <InputNum value={app.state.settings.maxSize} step={100} onChange={app.actions.setOutputMaxSize} />
         <SliderWrapper>
           <p>Quality: {app.state.settings.quality}%</p>
           <Slider value={app.state.settings.quality} min={25} max={100} onChange={app.actions.setOutputQuality} />
