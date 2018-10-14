@@ -1,0 +1,39 @@
+{
+  "name": "bulk-image-tool",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "emotion": "^9.2.12",
+    "file-saver": "^2.0.0-rc.3",
+    "jszip": "^3.1.5",
+    "milligram": "^1.3.0",
+    "normalize.css": "^8.0.0",
+    "overmind": "^4.0.0-1539461411754",
+    "overmind-react": "^4.0.0-1539461411754",
+    "rc-slider": "^8.6.3",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-dropzone": "^6.2.2",
+    "react-emotion": "^9.2.12",
+    "react-pose": "^3.3.6",
+    "react-scripts-ts": "3.1.0",
+    "uuid": "^3.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@types/file-saver": "^1.3.1",
+    "@types/jest": "^23.3.5",
+    "@types/jszip": "^3.1.4",
+    "@types/node": "^10.11.7",
+    "@types/rc-slider": "^8.6.0",
+    "@types/react": "^16.4.16",
+    "@types/react-dom": "^16.0.9",
+    "@types/uuid": "^3.4.4",
+    "typescript": "^3.1.3"
+  }
+}

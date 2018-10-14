@@ -1,0 +1,13 @@
+import { Mutate } from 'overmind';
+import { StateImageId, StateImage } from './state';
+
+export const removeImage: Mutate<StateImageId> = ({ state, value: fileId }) => {
+  const file = state.files.find(f => f.id === fileId);
+  if (file) {
+    state.files.splice(state.files.indexOf(file), 1);
+  }
+};
+
+export const addImages: Mutate<Array<StateImage>> = ({ state, value: files }) => {
+  state.files.push(...files);
+};
