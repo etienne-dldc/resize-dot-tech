@@ -8,3 +8,5 @@ export const removeImage: Action<StateImageId> = ({ mutate }) => mutate(mutation
 
 export const addImages: Action<Array<FileWithPreview>> = ({ map }) =>
   map(operations.mapFileToStateImage).mutate(mutations.addImages);
+
+export const processAndDowloadZip: Action = ({ run }) => run(operations.dowloadZip);

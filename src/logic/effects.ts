@@ -1,66 +1,133 @@
 import * as createUuid from 'uuid/v4';
-import { StateImageId } from './state';
+import { StateImage, StateSettings, OutputMimeType } from './state';
+import * as saveAsFunction from 'file-saver';
 import { FileWithPreview } from 'react-dropzone';
+import * as JSZip from 'jszip';
 
 export const uuid = createUuid;
 
-const blobMap = new Map<StateImageId, FileWithPreview>();
+export const dowloadFile = saveAsFunction;
 
-export const blobManager = blobMap;
+interface FileWithContent {
+  dataURL: string;
+  name: string;
+  size: number;
+}
 
-// import algoliasearch from 'algoliasearch';
-// import algoliasearchHelper from 'algoliasearch-helper';
-// import { SearchHit } from './state';
+interface FileWithInfo extends FileWithContent {
+  width: number;
+  height: number;
+  img: HTMLImageElement;
+}
 
-// const applicationID = 'Y22I53GFTP';
-// const apiKey = 'b1a057e32b6b56d9b492373173f86b33';
-// const indexName = 'questions';
+const extensions: { [K in OutputMimeType]: string } = {
+  [OutputMimeType.jpeg]: 'jpg',
+  [OutputMimeType.png]: 'png',
+  [OutputMimeType.webp]: 'webp',
+};
 
-// function createAlgoliaEffect() {
-//   let client: algoliasearch.Client | null = null;
-//   let helper: algoliasearchHelper.AlgoliaSearchHelper<SearchHit> | null = null;
-//   let initialized: boolean = false;
-//   let answersIndex: algoliasearch.Index;
+function getImageDataURL(file: FileWithPreview): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = event => {
+      resolve(reader.result as string);
+    };
+    reader.onabort = () => {
+      reject();
+    };
+    reader.onerror = () => {
+      reject();
+    };
+    reader.readAsDataURL(file);
+  });
+}
 
-//   function init() {
-//     if (initialized) {
-//       return;
-//     }
-//     client = algoliasearch(applicationID, apiKey);
-//     answersIndex = client.initIndex('answers');
-//     helper = algoliasearchHelper(client, indexName);
-//     initialized = true;
-//   }
+function getImageInfo(file: FileWithContent): Promise<FileWithInfo> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = file.dataURL;
+    img.onload = () => {
+      resolve({
+        ...file,
+        width: img.width,
+        height: img.height,
+        img,
+      });
+    };
+  });
+}
 
-//   function search(query: string) {
-//     if (initialized === false || helper === null) {
-//       throw new Error('Algolia is not initialized yet');
-//     }
-//     return helper
-//       .searchOnce({
-//         query
-//       } as any)
-//       .then(v => {
-//         return v.content;
-//       });
-//   }
+function getNewSize(width: number, height: number): { width: number; height: number } {
+  if (width < 1600 && height < 1600) {
+    return { width, height };
+  }
+  const scale = width > height ? 1600 / width : 1600 / height;
+  return { width: width * scale, height: height * scale };
+}
 
-//   function getAnswer(id: string): Promise<any> {
-//     return new Promise((resolve, reject) => {
-//       answersIndex.getObject(id, (err, res) => {
-//         if (err) {
-//           reject(err);
-//         }
-//         resolve(res);
-//       });
-//     });
-//   }
+function resize(file: FileWithInfo, settings: StateSettings): Promise<Blob> {
+  return new Promise((resolve, reject) => {
+    const { height, width } = getNewSize(file.width, file.height);
+    const elem = document.createElement('canvas');
+    elem.width = width;
+    elem.height = height;
+    const ctx = elem.getContext('2d') as CanvasRenderingContext2D;
+    // img.width and img.height will give the original dimensions
+    ctx.drawImage(file.img, 0, 0, width, height);
+    ctx.canvas.toBlob(
+      blob => {
+        if (!blob) {
+          reject();
+          return;
+        }
+        const output = new File([blob], file.name, {
+          type: settings.type,
+          lastModified: Date.now(),
+        });
+        resolve(output);
+      },
+      settings.type,
+      settings.quality
+    );
+  });
+}
 
-//   return {
-//     init,
-//     search,
-//     getAnswer
-//   };
-// }
+async function processImage(file: StateImage, settings: StateSettings) {
+  const content = await getImageDataURL(file.input);
+  const infos = await getImageInfo({
+    dataURL: content,
+    name: file.input.name,
+    size: file.input.size,
+  });
+  const output = await resize(infos, settings);
+  return {
+    infos,
+    output,
+  };
+}
 
-// export const algolia = createAlgoliaEffect();
+function proccessImages(files: Array<StateImage>, settings: StateSettings) {
+  return Promise.all(files.map(f => processImage(f, settings)));
+}
+
+async function downloadZip(files: Array<StateImage>, settings: StateSettings) {
+  const proccessed = await proccessImages(files, settings);
+  const zip = new JSZip();
+  proccessed.forEach(file => {
+    zip.file(file.infos.name + '.' + extensions[settings.type], file.output);
+  });
+  zip.generateAsync({ type: 'blob' }).then(content => {
+    // see FileSaver.js
+    saveAs(content, 'example.zip');
+  });
+}
+
+export const imageTools = {
+  getImageDataURL,
+  getImageInfo,
+  getNewSize,
+  resize,
+  processImage,
+  proccessImages,
+  downloadZip,
+};

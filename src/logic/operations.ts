@@ -11,3 +11,7 @@ export const mapFileToStateImage: Operation.Map<Array<FileWithPreview>, Array<St
     input: inputFile,
   }));
 };
+
+export const dowloadZip: Operation.Run = ({ state, effects }) => {
+  return effects.imageTools.downloadZip(state.files, state.settings);
+};

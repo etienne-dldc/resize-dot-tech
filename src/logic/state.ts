@@ -17,7 +17,7 @@ export enum OutputMimeType {
   webp = 'image/webp',
 }
 
-export type Settings = {
+export type StateSettings = {
   type: OutputMimeType;
   quality: number;
 };
@@ -28,7 +28,7 @@ export type Settings = {
 
 export type State = {
   files: Array<StateImage>;
-  settings: Settings;
+  settings: StateSettings;
 };
 
 const state: State = {
