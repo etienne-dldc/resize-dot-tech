@@ -2,6 +2,7 @@
   "name": "bulk-image-tool",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://resize.etienne-dot-js.com/",
   "dependencies": {
     "emotion": "^9.2.12",
     "file-saver": "^2.0.0-rc.3",
@@ -24,7 +25,8 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "deploy": "yarn build && tar -cvf ./deploy.tar --exclude='*.map' ./captain-definition ./build/* && captainduckduck deploy -t ./deploy.tar"
   },
   "devDependencies": {
     "@types/file-saver": "^1.3.1",
