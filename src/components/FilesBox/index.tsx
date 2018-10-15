@@ -2,13 +2,16 @@ import * as React from 'react';
 import { ConnectProps, connect } from 'src/logic';
 import Box, { BoxHeader } from '../Box';
 import posed, { PoseGroup } from 'react-pose';
-import styled from 'react-emotion';
-import { StateImageId } from 'src/logic/state';
-import Button from '../Button';
+import FileLine from '../FileLine';
+import { Container } from './elements';
 
 type FilesBoxProps = ConnectProps;
 
-const FileItem = posed.div({
+const ListItem = posed.div({
+  init: {
+    x: -50,
+    opacity: 0,
+  },
   enter: {
     x: 0,
     opacity: 1,
@@ -19,13 +22,7 @@ const FileItem = posed.div({
   },
 });
 
-const Container = styled('div')({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'stretch',
-});
-
-class FilesBox extends React.PureComponent<FilesBoxProps, any> {
+class FilesBox extends React.PureComponent<FilesBoxProps> {
   public render() {
     const { app } = this.props;
     return (
@@ -34,22 +31,15 @@ class FilesBox extends React.PureComponent<FilesBoxProps, any> {
         <Container>
           <PoseGroup>
             {app.state.files.map(file => (
-              <FileItem key={file.id}>
-                {file.input.name}
-                <Button<string> params={file.id} onClick={this.removeImage}>
-                  Delete
-                </Button>
-              </FileItem>
+              <ListItem key={file.id}>
+                <FileLine fileId={file.id} />
+              </ListItem>
             ))}
           </PoseGroup>
         </Container>
       </Box>
     );
   }
-
-  private removeImage = (imageId: StateImageId) => {
-    this.props.app.actions.removeImage(imageId);
-  };
 }
 
 export default connect(FilesBox);

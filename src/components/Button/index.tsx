@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'react-emotion';
+import { ButtonStyled } from './elements';
 
 type OnClick<P> = (params: P, event: React.MouseEvent<HTMLButtonElement>) => void;
 
@@ -11,11 +11,6 @@ type Props<P> = {} extends P
       params: P;
       onClick?: OnClick<P>;
     };
-
-const ButtonStyled = styled('button')({
-  borderRadius: 0,
-  textTransform: 'uppercase',
-});
 
 class Button<P = {}> extends React.PureComponent<Props<P>> {
   public render() {
