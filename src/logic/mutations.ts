@@ -23,3 +23,10 @@ export const setSettingQuality: Mutate<number> = ({ state, value }) => {
 export const setSettingMaxSize: Mutate<number> = ({ state, value }) => {
   state.settings.maxSize = value;
 };
+
+export const toggleExpandItem: Mutate<StateImageId> = ({ state, value: fileId }) => {
+  const file = state.files.find(f => f.id === fileId);
+  if (file) {
+    file.expanded = !file.expanded;
+  }
+};

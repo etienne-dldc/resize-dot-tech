@@ -8,6 +8,7 @@ export type StateImageId = string;
 
 export type StateImage = {
   id: StateImageId;
+  expanded: boolean;
   input: FileWithPreview;
 };
 

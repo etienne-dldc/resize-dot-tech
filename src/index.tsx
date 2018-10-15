@@ -1,5 +1,4 @@
 import 'normalize.css';
-import 'milligram';
 
 import 'rc-slider/assets/index.css';
 import 'rc-input-number/assets/index.css';
@@ -17,10 +16,27 @@ body {
   height: 100%;
 }
 
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+
+  font-size: 1.6em;
+  font-weight: 300;
+  letter-spacing: .01em;
+  line-height: 1.6;
+
+  font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   color: #424242;
   background-color: #ffcfdf;
   background-image: linear-gradient(315deg, #ffcfdf 0%, #b0f3f1 74%);

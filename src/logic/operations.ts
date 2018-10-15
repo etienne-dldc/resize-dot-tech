@@ -6,10 +6,13 @@ export const mapFileToStateImage: Operation.Map<Array<FileWithPreview>, Array<St
   effects,
   value: files,
 }) => {
-  return files.map(inputFile => ({
-    id: effects.uuid(),
-    input: inputFile,
-  }));
+  return files.map(
+    (inputFile): StateImage => ({
+      id: effects.uuid(),
+      input: inputFile,
+      expanded: false,
+    })
+  );
 };
 
 export const dowloadZip: Operation.Run = ({ state, effects }) => {

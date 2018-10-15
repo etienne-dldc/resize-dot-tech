@@ -27,17 +27,17 @@ class Settings extends React.PureComponent<Props> {
           );
         })}
         <p>Max Size</p>
-        <InputNum value={app.state.settings.maxSize} step={100} onChange={app.actions.setOutputMaxSize} />
+        <InputNum value={app.state.settings.maxSize} step={100} onChange={app.actions.setSettingMaxSize} />
         <SliderWrapper>
           <p>Quality: {app.state.settings.quality}%</p>
-          <Slider value={app.state.settings.quality} min={25} max={100} onChange={app.actions.setOutputQuality} />
+          <Slider value={app.state.settings.quality} min={25} max={100} onChange={app.actions.setSettingQuality} />
         </SliderWrapper>
       </Box>
     );
   }
 
   private onTypeSelected = (type: OutputMimeType) => {
-    this.props.app.actions.setOutputType(type);
+    this.props.app.actions.setSettingType(type);
   };
 }
 

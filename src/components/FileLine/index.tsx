@@ -2,7 +2,8 @@ import * as React from 'react';
 import { ConnectProps, connect } from 'src/logic';
 import { StateImageId } from 'src/logic/state';
 import Button from '../Button';
-import { Container, Name } from './elements';
+import { Container, Name, Details, Header, ButtonWrapper } from './elements';
+import HoverProvider from '../HoverProvider';
 
 type FileLineProps = ConnectProps & { fileId: StateImageId };
 
@@ -15,16 +16,34 @@ class FileLine extends React.PureComponent<FileLineProps> {
     }
     return (
       <Container>
-        <Name>{file.input.name}</Name>
-        <Button<string> params={file.id} onClick={this.removeImage}>
-          Delete
-        </Button>
+        <HoverProvider>
+          {hoverParams => (
+            <Header onClick={this.toggle} innerRef={hoverParams.ref}>
+              <Name>{file.input.name}</Name>
+              <ButtonWrapper pose={hoverParams.hover || true ? 'show' : 'hide'}>
+                <Button onClick={this.removeImage}>
+                  Delete <br />
+                  Yolo
+                </Button>
+              </ButtonWrapper>
+            </Header>
+          )}
+        </HoverProvider>
+        {file.expanded && (
+          <Details>
+            <p>Yolo</p>
+          </Details>
+        )}
       </Container>
     );
   }
 
-  private removeImage = (imageId: StateImageId) => {
-    this.props.app.actions.removeImage(imageId);
+  private removeImage = () => {
+    this.props.app.actions.removeImage(this.props.fileId);
+  };
+
+  private toggle = () => {
+    this.props.app.actions.toggleExpandItem(this.props.fileId);
   };
 }
 
