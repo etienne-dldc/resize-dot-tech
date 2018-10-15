@@ -49,4 +49,5 @@ export const Details = styled('div')({
 export const Name = styled('p')({
   flex: 1,
   margin: 0,
+  padding: '0.8rem 1rem',
 });

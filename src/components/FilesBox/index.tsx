@@ -32,7 +32,7 @@ class FilesBox extends React.PureComponent<FilesBoxProps> {
           <PoseGroup>
             {app.state.files.map(file => (
               <ListItem key={file.id}>
-                <FileLine fileId={file.id} />
+                <FileLine file={file} />
               </ListItem>
             ))}
           </PoseGroup>

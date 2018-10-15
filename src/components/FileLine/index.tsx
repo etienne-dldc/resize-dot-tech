@@ -1,30 +1,23 @@
 import * as React from 'react';
 import { ConnectProps, connect } from 'src/logic';
-import { StateImageId } from 'src/logic/state';
+import { StateImage } from 'src/logic/state';
 import Button from '../Button';
 import { Container, Name, Details, Header, ButtonWrapper } from './elements';
 import HoverProvider from '../HoverProvider';
 
-type FileLineProps = ConnectProps & { fileId: StateImageId };
+type FileLineProps = ConnectProps & { file: StateImage };
 
 class FileLine extends React.PureComponent<FileLineProps> {
   public render() {
-    const { app, fileId } = this.props;
-    const file = app.state.files.find(f => f.id === fileId);
-    if (!file) {
-      return null;
-    }
+    const { file } = this.props;
     return (
       <Container>
         <HoverProvider>
           {hoverParams => (
             <Header onClick={this.toggle} innerRef={hoverParams.ref}>
               <Name>{file.input.name}</Name>
-              <ButtonWrapper pose={hoverParams.hover || true ? 'show' : 'hide'}>
-                <Button onClick={this.removeImage}>
-                  Delete <br />
-                  Yolo
-                </Button>
+              <ButtonWrapper pose={hoverParams.hover ? 'show' : 'hide'}>
+                <Button onClick={this.removeImage}>Delete</Button>
               </ButtonWrapper>
             </Header>
           )}
@@ -39,11 +32,11 @@ class FileLine extends React.PureComponent<FileLineProps> {
   }
 
   private removeImage = () => {
-    this.props.app.actions.removeImage(this.props.fileId);
+    this.props.app.actions.removeImage(this.props.file.id);
   };
 
   private toggle = () => {
-    this.props.app.actions.toggleExpandItem(this.props.fileId);
+    this.props.app.actions.toggleExpandItem(this.props.file.id);
   };
 }
 
