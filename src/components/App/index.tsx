@@ -5,21 +5,31 @@ import { ConnectProps, connect } from 'src/logic';
 import Settings from '../Settings';
 import DropZoneBox from '../DropZoneBox';
 import FilesBox from '../FilesBox';
+import Box from '../Box';
 
 type Props = ConnectProps & {};
 
 class App extends React.PureComponent<Props> {
   public render() {
     const { app } = this.props;
+    const hasFiles = app.state.files.length > 0;
     return (
       <Wrapper>
-        <Column>
-          <Settings />
-        </Column>
+        {hasFiles && (
+          <Column>
+            <Settings />
+          </Column>
+        )}
         <Column>
           <DropZoneBox />
-          <FilesBox />
-          {app.state.files.length > 0 && <Button onClick={this.processFiles}>Run</Button>}
+          {hasFiles && <FilesBox />}
+          {hasFiles && (
+            <Box>
+              <Button big={true} onClick={this.processFiles}>
+                Run
+              </Button>
+            </Box>
+          )}
         </Column>
       </Wrapper>
     );

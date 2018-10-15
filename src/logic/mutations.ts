@@ -20,7 +20,7 @@ export const setSettingQuality: Mutate<number> = ({ state, value }) => {
   state.settings.quality = value;
 };
 
-export const setSettingMaxSize: Mutate<number> = ({ state, value }) => {
+export const setSettingMaxSize: Mutate<number | null> = ({ state, value }) => {
   state.settings.maxSize = value;
 };
 

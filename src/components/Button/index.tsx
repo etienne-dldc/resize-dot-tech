@@ -1,24 +1,38 @@
 import * as React from 'react';
-import { ButtonStyled } from './elements';
+import { ButtonStyledAnim } from './elements';
+import HoverProvider from '../HoverProvider';
 
 type OnClick<P> = (params: P, event: React.MouseEvent<HTMLButtonElement>) => void;
 
-type Props<P> = {} extends P
+type Props<P> = ({} extends P
   ? {
       onClick?: OnClick<{}>;
     }
   : {
       params: P;
       onClick?: OnClick<P>;
-    };
+    }) & {
+  big?: boolean;
+  danger?: boolean;
+};
 
 class Button<P = {}> extends React.PureComponent<Props<P>> {
   public render() {
-    const { children } = this.props;
+    const { children, big = false, danger = false } = this.props;
     return (
-      <ButtonStyled type="button" onClick={this.props.onClick ? this.onClick : undefined}>
-        {children}
-      </ButtonStyled>
+      <HoverProvider>
+        {hoverParams => (
+          <ButtonStyledAnim
+            pose={hoverParams.hover ? 'hover' : 'init'}
+            {...{ big, danger }}
+            type="button"
+            onClick={this.props.onClick ? this.onClick : undefined}
+            innerRef={hoverParams.ref as any}
+          >
+            {children}
+          </ButtonStyledAnim>
+        )}
+      </HoverProvider>
     );
   }
 

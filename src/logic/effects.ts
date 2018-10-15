@@ -67,7 +67,7 @@ function getNewSize(width: number, height: number, max: number): { width: number
 
 function resize(file: FileWithInfo, settings: StateSettings): Promise<Blob> {
   return new Promise((resolve, reject) => {
-    const { height, width } = getNewSize(file.width, file.height, settings.maxSize);
+    const { height, width } = getNewSize(file.width, file.height, settings.maxSize || 1600);
     const elem = document.createElement('canvas');
     elem.width = width;
     elem.height = height;

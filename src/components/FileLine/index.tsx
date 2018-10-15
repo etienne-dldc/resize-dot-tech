@@ -17,7 +17,9 @@ class FileLine extends React.PureComponent<FileLineProps> {
             <Header onClick={this.toggle} innerRef={hoverParams.ref}>
               <Name>{file.input.name}</Name>
               <ButtonWrapper pose={hoverParams.hover ? 'show' : 'hide'}>
-                <Button onClick={this.removeImage}>Delete</Button>
+                <Button danger={true} onClick={this.removeImage}>
+                  Delete
+                </Button>
               </ButtonWrapper>
             </Header>
           )}
@@ -36,7 +38,7 @@ class FileLine extends React.PureComponent<FileLineProps> {
   };
 
   private toggle = () => {
-    this.props.app.actions.toggleExpandItem(this.props.file.id);
+    // this.props.app.actions.toggleExpandItem(this.props.file.id);
   };
 }
 

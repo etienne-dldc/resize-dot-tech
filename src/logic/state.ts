@@ -21,7 +21,7 @@ export enum OutputMimeType {
 export type StateSettings = {
   type: OutputMimeType;
   quality: number;
-  maxSize: number;
+  maxSize: number | null;
 };
 
 /**

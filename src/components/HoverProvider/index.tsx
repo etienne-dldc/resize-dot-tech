@@ -42,6 +42,8 @@ class HoverProvider extends React.PureComponent<Props, State> {
     if (this.elRef.current) {
       this.elRef.current.removeEventListener('mouseenter', this.onEnter);
       this.elRef.current.removeEventListener('mouseleave', this.onLeave);
+    } else {
+      console.warn('Did you forgot to pass HoverProvider ref ?');
     }
   }
 
