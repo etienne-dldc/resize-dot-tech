@@ -25,6 +25,7 @@
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
+    "typecheck": "tsc --noEmit -p ./tsconfig.json",
     "deploy": "yarn build && tar -cvf ./deploy.tar --exclude='*.map' ./captain-definition ./build/* && npx captainduckduck deploy -t ./deploy.tar"
   },
   "devDependencies": {

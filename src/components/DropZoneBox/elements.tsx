@@ -1,5 +1,5 @@
 import styled from 'react-emotion';
-import ColorBox from '../ColorBox/inex';
+import ColorBox from '../ColorBox';
 
 export const DropBox = styled(ColorBox)({
   flexDirection: 'column',

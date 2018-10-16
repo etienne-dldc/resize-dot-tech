@@ -1,5 +1,5 @@
 import styled from 'react-emotion';
-import ColorBox from '../ColorBox/inex';
+import ColorBox from '../ColorBox';
 
 const Box = styled('div')({
   display: 'flex',
