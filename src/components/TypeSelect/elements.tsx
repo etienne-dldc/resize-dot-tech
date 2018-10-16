@@ -19,18 +19,18 @@ export const SelectItem = styled('div')({
 export const SelectItemAnim = posed(SelectItem)({
   init: {
     color: '#424242',
-    backgroundImage: gradients.beige, // 'linear-gradient(315deg, #f1dfd1 0%, #f6f0ea 74%)',
+    backgroundImage: gradients.beige,
   },
   hover: {
     color: '#424242',
-    backgroundImage: gradients.reversed.beige, // 'linear-gradient(315deg, #f6f0ea 0%, #f1dfd1 74%)',
-  },
-  hoverSelected: {
-    color: '#FFFFFF',
-    backgroundImage: gradients.pink, // 'linear-gradient(315deg, #09203f 0%, #537895 74%)',
+    backgroundImage: gradients.darken.beige,
   },
   selected: {
     color: '#FFFFFF',
-    backgroundImage: gradients.reversed.pink, // 'linear-gradient(315deg, #537895 0%, #09203f 74%)',
+    backgroundImage: gradients.pink,
+  },
+  hoverSelected: {
+    color: '#FFFFFF',
+    backgroundImage: gradients.darken.pink,
   },
 });

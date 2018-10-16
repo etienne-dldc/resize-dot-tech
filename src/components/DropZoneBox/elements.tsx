@@ -1,5 +1,6 @@
 import styled from 'react-emotion';
-import ColorBox from '../ColorBox';
+import ColorBox, { posedOptions } from '../ColorBox';
+import posed from 'react-pose';
 
 export const DropBox = styled(ColorBox)({
   flexDirection: 'column',
@@ -10,6 +11,7 @@ export const DropBox = styled(ColorBox)({
   fontWeight: 300,
   padding: 10,
   '& > div': {
+    cursor: 'pointer',
     borderColor: 'white',
     display: 'flex',
     alignItems: 'center',
@@ -20,6 +22,8 @@ export const DropBox = styled(ColorBox)({
     flexDirection: 'column',
   },
 });
+
+export const DropBoxAnimated = posed(DropBox)(posedOptions);
 
 export const DropText = styled('p')({
   margin: 0,

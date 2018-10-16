@@ -1,5 +1,6 @@
 import styled from 'react-emotion';
 import posed from 'react-pose';
+import gradients from 'src/utils/gradients';
 
 export type ButtonStyledProps = {
   big: boolean;
@@ -31,15 +32,10 @@ export const ButtonStyled = styled('button')<ButtonStyledProps>(
 
 export const ButtonStyledAnim = posed(ButtonStyled)({
   init: {
-    backgroundImage: (props: { danger: boolean }) =>
-      props.danger
-        ? 'linear-gradient(315deg, #eb4511 0%, #b02e0c 74%)'
-        : 'linear-gradient(315deg, #045de9 0%, #09c6f9 74%)',
+    backgroundImage: (props: { danger: boolean }) => (props.danger ? gradients.danger : gradients.buttonBlue),
   },
   hover: {
     backgroundImage: (props: { danger: boolean }) =>
-      props.danger
-        ? 'linear-gradient(315deg, #b02e0c 0%, #eb4511 74%)'
-        : 'linear-gradient(315deg, #09c6f9 0%, #045de9 74%)',
+      props.danger ? gradients.darken.danger : gradients.darken.buttonBlue,
   },
 });

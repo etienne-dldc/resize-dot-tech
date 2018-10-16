@@ -2,7 +2,8 @@ import { ConnectProps, connect } from 'src/logic';
 import * as React from 'react';
 import Box from '../Box';
 import Dropzone, { FileWithPreview } from 'react-dropzone';
-import { DropBox, DropText } from './elements';
+import { DropText, DropBoxAnimated } from './elements';
+import HoverProvider from '../HoverProvider';
 
 type Props = ConnectProps;
 
@@ -10,15 +11,23 @@ class DropZoneBox extends React.PureComponent<Props> {
   public render() {
     return (
       <Box>
-        <DropBox gradient="blue">
-          <Dropzone style={{}} accept="image/*" onDrop={this.onDrop}>
-            <DropText>
-              Drop files here
-              <br />
-              Or click to select
-            </DropText>
-          </Dropzone>
-        </DropBox>
+        <HoverProvider>
+          {hoverParams => (
+            <DropBoxAnimated
+              gradient="blue"
+              pose={hoverParams.hover ? 'hover' : 'init'}
+              innerRef={hoverParams.ref as any}
+            >
+              <Dropzone style={{}} accept="image/*" onDrop={this.onDrop}>
+                <DropText>
+                  Drop files here
+                  <br />
+                  Or click to select
+                </DropText>
+              </Dropzone>
+            </DropBoxAnimated>
+          )}
+        </HoverProvider>
       </Box>
     );
   }
