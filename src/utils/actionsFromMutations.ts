@@ -1,10 +1,10 @@
-import { Mutate, Action } from 'overmind';
+import { Operation, Action } from 'overmind';
 
-type ActionsFromMutations<Mutations extends { [key: string]: Mutate }> = {
+type ActionsFromMutations<Mutations extends { [key: string]: Operation.Mutate }> = {
   [K in keyof Mutations]: Action<Parameters<Mutations[K]>[0]['value']>
 };
 
-function actionsFromMutations<Mutations extends { [key: string]: Mutate }>(
+function actionsFromMutations<Mutations extends { [key: string]: Operation.Mutate }>(
   mutations: Mutations
 ): ActionsFromMutations<Mutations> {
   return Object.keys(mutations).reduce<ActionsFromMutations<Mutations>>(

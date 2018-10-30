@@ -1,4 +1,4 @@
-import * as Color from 'color';
+import Color from 'color';
 
 const gradientsData = {
   pink: ['#6b0f1a', '#b91372'],
@@ -16,7 +16,7 @@ const gradients: { [K in GradientName]: string } & { darken: { [K in GradientNam
   gradientsData
 ).reduce<any>(
   (acc, name) => {
-    const data = gradientsData[name];
+    const data = gradientsData[name as GradientName];
     acc[name] = `linear-gradient(315deg, ${data[0]} 0%, ${data[1]} 74%)`;
     acc.darken[name] = `linear-gradient(315deg, ${Color(data[0])
       .darken(0.3)

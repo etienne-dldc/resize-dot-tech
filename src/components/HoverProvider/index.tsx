@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ConnectProps, connect } from 'src/logic';
+import { ConnectProps, connect } from '../../logic';
 
 type Coords = [number | null, number | null];
 

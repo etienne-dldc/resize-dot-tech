@@ -1,6 +1,6 @@
 import styled from 'react-emotion';
 import posed from 'react-pose';
-import gradients from 'src/utils/gradients';
+import gradients from '../../utils/gradients';
 
 export type ButtonStyledProps = {
   big: boolean;

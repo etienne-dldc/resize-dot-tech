@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ConnectProps, connect } from 'src/logic';
-import { StateImage } from 'src/logic/state';
+import { ConnectProps, connect } from '../../logic';
 import Button from '../Button';
 import { Container, Name, Details, Header, ButtonWrapper } from './elements';
 import HoverProvider from '../HoverProvider';
+import { StateImage } from '../../logic/state';
 
 type FileLineProps = ConnectProps & { file: StateImage };
 

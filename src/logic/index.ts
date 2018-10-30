@@ -1,5 +1,5 @@
-import createConnect, { TConnect } from 'overmind-react';
-import App from 'overmind';
+import { TConnect, createConnect } from 'overmind-react';
+import { Overmind, TApp } from 'overmind';
 import * as effects from './effects';
 import * as actions from './actions';
 import state from './state';
@@ -17,11 +17,10 @@ const config: Config = {
 };
 
 declare module 'overmind' {
-  interface IState extends TState<Config> {}
-  interface IEffects extends TEffects<Config> {}
+  interface App extends TApp<typeof config> {}
 }
 
-const app = new App(config, {
+const app = new Overmind(config, {
   name: 'bulk-image-tool',
   // devtools: false,
 });

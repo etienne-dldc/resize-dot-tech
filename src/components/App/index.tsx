@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Button from '../Button';
 import { Column, Wrapper } from './elements';
-import { ConnectProps, connect } from 'src/logic';
+import { ConnectProps, connect } from '../../logic';
 import Settings from '../Settings';
 import DropZoneBox from '../DropZoneBox';
 import FilesBox from '../FilesBox';

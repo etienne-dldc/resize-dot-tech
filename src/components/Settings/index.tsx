@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { connect, ConnectProps } from 'src/logic';
+import { connect, ConnectProps } from '../../logic';
 import Box, { BoxHeader } from '../Box';
-import { OutputMimeType } from 'src/logic/state';
 import Slider from 'rc-slider';
 import InputNum from 'rc-input-number';
 import { Padding, Label, Content, Fade } from './elements';
 import TypeSelect from '../TypeSelect';
 import { PoseGroup } from 'react-pose';
+import { OutputMimeType } from '../../logic/state';
 
 type Props = ConnectProps;
 

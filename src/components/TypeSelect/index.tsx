@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { connect, ConnectProps } from 'src/logic';
-import { OutputMimeType } from 'src/logic/state';
+import { connect, ConnectProps } from '../../logic';
 import { Wrapper, SelectItemAnim } from './elements';
 import HoverProvider from '../HoverProvider';
+import { OutputMimeType } from '../../logic/state';
 
 type Props = ConnectProps;
 

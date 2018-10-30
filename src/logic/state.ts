@@ -1,5 +1,3 @@
-import { FileWithPreview } from 'react-dropzone';
-
 /**
  * Parts
  */
@@ -9,7 +7,7 @@ export type StateImageId = string;
 export type StateImage = {
   id: StateImageId;
   expanded: boolean;
-  input: FileWithPreview;
+  input: File;
 };
 
 export enum OutputMimeType {

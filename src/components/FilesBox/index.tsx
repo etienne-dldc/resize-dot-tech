@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ConnectProps, connect } from 'src/logic';
+import { ConnectProps, connect } from '../../logic';
 import Box, { BoxHeader } from '../Box';
 import posed, { PoseGroup } from 'react-pose';
 import FileLine from '../FileLine';

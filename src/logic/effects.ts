@@ -1,10 +1,9 @@
 import * as createUuid from 'uuid/v4';
 import { StateImage, StateSettings, OutputMimeType } from './state';
 import * as saveAsFunction from 'file-saver';
-import { FileWithPreview } from 'react-dropzone';
-import * as JSZip from 'jszip';
+import JSZip from 'jszip';
 
-export const uuid = createUuid;
+export const uuid: () => string = createUuid as any;
 
 export const dowloadFile = saveAsFunction;
 
@@ -26,7 +25,7 @@ const extensions: { [K in OutputMimeType]: string } = {
   [OutputMimeType.webp]: 'webp',
 };
 
-function getImageDataURL(file: FileWithPreview): Promise<string> {
+function getImageDataURL(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = event => {

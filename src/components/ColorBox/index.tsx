@@ -1,5 +1,5 @@
 import styled from 'react-emotion';
-import gradients, { GradientName } from 'src/utils/gradients';
+import gradients, { GradientName } from '../../utils/gradients';
 
 type ColorBoxProps = {
   gradient: GradientName;

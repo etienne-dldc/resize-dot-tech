@@ -1,7 +1,7 @@
-import { ConnectProps, connect } from 'src/logic';
+import { ConnectProps, connect } from '../../logic';
 import * as React from 'react';
 import Box from '../Box';
-import Dropzone, { FileWithPreview } from 'react-dropzone';
+import Dropzone from 'react-dropzone';
 import { DropText, DropBoxAnimated } from './elements';
 import HoverProvider from '../HoverProvider';
 
@@ -32,7 +32,7 @@ class DropZoneBox extends React.PureComponent<Props> {
     );
   }
 
-  private onDrop = async (acceptedFiles: Array<FileWithPreview>, rejectedFiles: Array<FileWithPreview>) => {
+  private onDrop = async (acceptedFiles: Array<File>, rejectedFiles: Array<File>) => {
     console.log({ rejectedFiles, acceptedFiles });
     this.props.app.actions.addImages(acceptedFiles);
   };
