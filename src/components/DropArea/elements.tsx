@@ -1,18 +1,19 @@
 import styled from 'react-emotion';
-import ColorBox, { posedOptions } from '../ColorBox';
-import posed from 'react-pose';
+import { Colors } from '@blueprintjs/core';
 
-export const DropBox = styled(ColorBox)({
+export const Container = styled('div')({
+  display: 'flex',
   flexDirection: 'column',
   height: 100,
   alignItems: 'stretch',
   justifyContent: 'center',
-  fontSize: '2rem',
+  fontSize: '1.7rem',
+  lineHeight: 1.7,
   fontWeight: 300,
-  padding: 10,
+  padding: 0,
   '& > div': {
     cursor: 'pointer',
-    borderColor: 'white',
+    borderColor: Colors.WHITE,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -22,8 +23,6 @@ export const DropBox = styled(ColorBox)({
     flexDirection: 'column',
   },
 });
-
-export const DropBoxAnimated = posed(DropBox)(posedOptions);
 
 export const DropText = styled('p')({
   margin: 0,

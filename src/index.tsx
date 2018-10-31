@@ -1,11 +1,11 @@
 import 'normalize.css';
-
-import 'rc-slider/assets/index.css';
-import 'rc-input-number/assets/index.css';
+import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+import '@blueprintjs/core/lib/css/blueprint.css';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { injectGlobal } from 'emotion';
+import { Colors } from '@blueprintjs/core';
 
 import App from './components/App';
 
@@ -38,8 +38,7 @@ body {
 
   font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   color: #424242;
-  background-color: #ffcfdf;
-  background-image: linear-gradient(315deg, #ffcfdf 0%, #b0f3f1 74%);
+  background-color: ${Colors.DARK_GRAY3};
 }
 
 /* root */

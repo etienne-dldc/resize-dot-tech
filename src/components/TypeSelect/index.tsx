@@ -3,6 +3,7 @@ import { connect, ConnectProps } from '../../logic';
 import { Wrapper, SelectItemAnim } from './elements';
 import HoverProvider from '../HoverProvider';
 import { OutputMimeType } from '../../logic/state';
+import { ButtonGroup, Button } from '@blueprintjs/core';
 
 type Props = ConnectProps;
 
@@ -16,35 +17,51 @@ class TypeSelect extends React.PureComponent<Props> {
   public render() {
     const { app } = this.props;
     return (
-      <Wrapper>
+      <ButtonGroup>
         {[OutputMimeType.jpeg, OutputMimeType.png, OutputMimeType.webp].map(k => {
           const onClick = () => {
             this.onTypeSelected(k);
           };
           const selected = k === app.state.settings.type;
           return (
-            <HoverProvider key={k}>
-              {hoverParams => (
-                <SelectItemAnim
-                  pose={
-                    selected ? (hoverParams.hover ? 'hoverSelected' : 'selected') : hoverParams.hover ? 'hover' : 'init'
-                  }
-                  innerRef={hoverParams.ref as any}
-                  onClick={onClick}
-                >
-                  {typeNames[k]}
-                </SelectItemAnim>
-              )}
-            </HoverProvider>
+            <Button key={k} active={selected} onClick={onClick} disabled={app.state.running}>
+              {typeNames[k]}
+            </Button>
           );
         })}
-      </Wrapper>
+      </ButtonGroup>
     );
   }
 
   private onTypeSelected = (type: OutputMimeType) => {
     this.props.app.actions.setSettingType(type);
   };
+}
+
+{
+  /* <Wrapper>
+{[OutputMimeType.jpeg, OutputMimeType.png, OutputMimeType.webp].map(k => {
+  const onClick = () => {
+    this.onTypeSelected(k);
+  };
+  const selected = k === app.state.settings.type;
+  return (
+    <HoverProvider key={k}>
+      {hoverParams => (
+        <SelectItemAnim
+          pose={
+            selected ? (hoverParams.hover ? 'hoverSelected' : 'selected') : hoverParams.hover ? 'hover' : 'init'
+          }
+          innerRef={hoverParams.ref as any}
+          onClick={onClick}
+        >
+          {typeNames[k]}
+        </SelectItemAnim>
+      )}
+    </HoverProvider>
+  );
+})}
+</Wrapper> */
 }
 
 export default connect(TypeSelect);

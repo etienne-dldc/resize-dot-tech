@@ -19,7 +19,7 @@ export enum OutputMimeType {
 export type StateSettings = {
   type: OutputMimeType;
   quality: number;
-  maxSize: number | null;
+  maxSize: number;
 };
 
 /**
@@ -29,6 +29,7 @@ export type StateSettings = {
 export type State = {
   files: Array<StateImage>;
   settings: StateSettings;
+  running: boolean;
 };
 
 const state: State = {
@@ -38,6 +39,7 @@ const state: State = {
     quality: 90,
     maxSize: 1600,
   },
+  running: false,
 };
 
 export default state;

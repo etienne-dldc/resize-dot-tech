@@ -1,23 +1,23 @@
 import * as React from 'react';
 import { ConnectProps, connect } from '../../logic';
-import Button from '../Button';
 import { Container, Name, Details, Header, ButtonWrapper } from './elements';
 import HoverProvider from '../HoverProvider';
 import { StateImage } from '../../logic/state';
+import { Button } from '@blueprintjs/core';
 
-type FileLineProps = ConnectProps & { file: StateImage };
+type FileLineProps = ConnectProps & { file: StateImage; fileIndex: number };
 
 class FileLine extends React.PureComponent<FileLineProps> {
   public render() {
-    const { file } = this.props;
+    const { file, fileIndex } = this.props;
     return (
-      <Container>
+      <Container isEven={fileIndex % 2 === 0}>
         <HoverProvider>
           {hoverParams => (
             <Header onClick={this.toggle} innerRef={hoverParams.ref}>
               <Name>{file.input.name}</Name>
               <ButtonWrapper pose={hoverParams.hover ? 'show' : 'hide'}>
-                <Button danger={true} onClick={this.removeImage}>
+                <Button icon="trash" intent="danger" onClick={this.removeImage}>
                   Delete
                 </Button>
               </ButtonWrapper>

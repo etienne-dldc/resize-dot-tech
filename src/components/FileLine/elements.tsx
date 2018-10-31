@@ -1,15 +1,28 @@
 import styled from 'react-emotion';
 import posed from 'react-pose';
+import { Colors } from '@blueprintjs/core';
 
-export const Container = styled('div')({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'stretch',
-  transitionDuration: '300ms',
-  ':hover': {
-    background: '#ececec',
+type ContainerProps = { isEven: boolean };
+
+export const Container = styled('div')<ContainerProps>(
+  {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    borderRadius: 5,
+    margin: '2px 0',
+    transitionDuration: '300ms',
+    ':hover': {
+      background: Colors.DARK_GRAY5,
+    },
   },
-});
+  (props: ContainerProps) =>
+    props.isEven
+      ? {
+          background: Colors.DARK_GRAY5,
+        }
+      : {}
+);
 
 const ButtonWrapperStyled = styled('div')({
   position: 'absolute',
@@ -18,7 +31,8 @@ const ButtonWrapperStyled = styled('div')({
   bottom: 0,
   display: 'flex',
   flexDirection: 'row',
-  alignItems: 'stretch',
+  alignItems: 'center',
+  padding: 5,
 });
 
 export const ButtonWrapper = posed(ButtonWrapperStyled)({

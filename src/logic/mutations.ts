@@ -20,7 +20,7 @@ export const setSettingQuality: Operation.Mutate<number> = ({ state, value }) =>
   state.settings.quality = value;
 };
 
-export const setSettingMaxSize: Operation.Mutate<number | null> = ({ state, value }) => {
+export const setSettingMaxSize: Operation.Mutate<number> = ({ state, value }) => {
   state.settings.maxSize = value;
 };
 
@@ -29,4 +29,12 @@ export const toggleExpandItem: Operation.Mutate<StateImageId> = ({ state, value:
   if (file) {
     file.expanded = !file.expanded;
   }
+};
+
+export const setRunning: Operation.Mutate = ({ state }) => {
+  state.running = true;
+};
+
+export const setNotRunning: Operation.Mutate = ({ state }) => {
+  state.running = false;
 };
