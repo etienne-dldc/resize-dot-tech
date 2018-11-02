@@ -16,10 +16,17 @@ export enum OutputMimeType {
   webp = 'image/webp',
 }
 
+export type WaterMarkSettings = {
+  enabled: boolean;
+  text: string;
+  opacity: number;
+};
+
 export type StateSettings = {
   type: OutputMimeType;
   quality: number;
   maxSize: number;
+  watermark: WaterMarkSettings;
 };
 
 /**
@@ -38,6 +45,11 @@ const state: State = {
     type: OutputMimeType.jpeg,
     quality: 90,
     maxSize: 1600,
+    watermark: {
+      enabled: false,
+      text: '',
+      opacity: 100,
+    },
   },
   running: false,
 };

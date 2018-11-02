@@ -14,6 +14,18 @@ export const processAndDowloadZip: Action = ({ mutate }) =>
     .run(operations.dowloadZip)
     .mutate(mutations.setNotRunning);
 
-export const { setSettingType, setSettingMaxSize, setSettingQuality, toggleExpandItem } = actionsFromMutations(
-  mutations
-);
+export const handleWatermarkCheckbox: Action<React.MouseEvent<HTMLInputElement>> = ({ map }) =>
+  map(operations.extractChecked).mutate(mutations.setWatermarkEnabled);
+
+export const handleWatermarkText: Action<React.ChangeEvent<HTMLInputElement>> = ({ map }) =>
+  map(operations.extractValue).mutate(mutations.setWatermarkText);
+
+// Actions from mutations
+
+export const {
+  setSettingType,
+  setSettingMaxSize,
+  setSettingQuality,
+  toggleExpandItem,
+  setWaterMarkOpacity,
+} = actionsFromMutations(mutations);

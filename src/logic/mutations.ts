@@ -21,6 +21,8 @@ export const setSettingQuality: Operation.Mutate<number> = ({ state, value }) =>
 };
 
 export const setSettingMaxSize: Operation.Mutate<number> = ({ state, value }) => {
+  console.log(value);
+
   state.settings.maxSize = value;
 };
 
@@ -37,4 +39,16 @@ export const setRunning: Operation.Mutate = ({ state }) => {
 
 export const setNotRunning: Operation.Mutate = ({ state }) => {
   state.running = false;
+};
+
+export const setWatermarkEnabled: Operation.Mutate<boolean> = ({ state, value }) => {
+  state.settings.watermark.enabled = value;
+};
+
+export const setWatermarkText: Operation.Mutate<string> = ({ state, value }) => {
+  state.settings.watermark.text = value;
+};
+
+export const setWaterMarkOpacity: Operation.Mutate<number> = ({ state, value }) => {
+  state.settings.watermark.opacity = value;
 };
