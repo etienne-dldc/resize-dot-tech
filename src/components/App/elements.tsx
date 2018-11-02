@@ -59,7 +59,7 @@ export const Footer = styled('footer')({
   padding: '2rem',
 });
 
-export const TwitterLink = styled('a')({
+export const Link = styled('a')({
   cursor: 'pointer',
   color: Colors.BLUE4,
   '&:active': {

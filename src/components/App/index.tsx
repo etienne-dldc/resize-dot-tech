@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Column, Colums, Wrapper, Footer, TwitterLink } from './elements';
+import { Column, Colums, Wrapper, Footer, Link } from './elements';
 import { ConnectProps, connect } from '../../logic';
 import Settings from '../Settings';
 import DropArea from '../DropArea';
@@ -43,8 +43,13 @@ class App extends React.PureComponent<Props> {
           </Column>
         </Colums>
         <Footer>
-          Made with <Icon icon="heart" iconSize={13} /> by{' '}
-          <TwitterLink href="https://twitter.com/Etienne_dot_js">@Etienne_dot_js</TwitterLink>
+          Made with <Icon icon="code" iconSize={15} /> by{' '}
+          <Link href="https://twitter.com/Etienne_dot_js">@Etienne_dot_js</Link>
+          {' - '}
+          Code available on{' '}
+          <Link href="https://github.com/etienne-dldc/bulk-image-tool">
+            <Icon icon="git-repo" iconSize={15} /> Github
+          </Link>
         </Footer>
       </Wrapper>
     );
