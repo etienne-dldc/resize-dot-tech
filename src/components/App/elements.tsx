@@ -1,6 +1,14 @@
 import styled from 'react-emotion';
 
 export const Wrapper = styled('div')({
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
+export const Colums = styled('div')({
   display: 'flex',
   flexDirection: 'row',
   height: '100%',
