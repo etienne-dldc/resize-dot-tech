@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Column, Colums, Wrapper } from './elements';
+import { Column, Colums, Wrapper, Footer, TwitterLink } from './elements';
 import { ConnectProps, connect } from '../../logic';
 import Settings from '../Settings';
 import DropArea from '../DropArea';
 import Files from '../Files';
 import Logo from '../Logo';
-import { Classes, Button, Card } from '@blueprintjs/core';
+import { Classes, Button, Card, Icon } from '@blueprintjs/core';
 
 type Props = ConnectProps & {};
 
@@ -42,6 +42,10 @@ class App extends React.PureComponent<Props> {
             )}
           </Column>
         </Colums>
+        <Footer>
+          Made with <Icon icon="heart" iconSize={13} /> by{' '}
+          <TwitterLink href="https://twitter.com/Etienne_dot_js">@Etienne_dot_js</TwitterLink>
+        </Footer>
       </Wrapper>
     );
   }
