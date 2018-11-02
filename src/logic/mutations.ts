@@ -52,3 +52,7 @@ export const setWatermarkText: Operation.Mutate<string> = ({ state, value }) => 
 export const setWaterMarkOpacity: Operation.Mutate<number> = ({ state, value }) => {
   state.settings.watermark.opacity = value;
 };
+
+export const setWaterMarkSize: Operation.Mutate<number> = ({ state, value }) => {
+  state.settings.watermark.size = value;
+};

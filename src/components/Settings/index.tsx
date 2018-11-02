@@ -71,6 +71,16 @@ class Settings extends React.PureComponent<Props> {
                 disabled={app.state.running}
               />
             </FormGroup>
+            <FormGroup label="Size" labelInfo={app.state.settings.watermark.size + 'px'}>
+              <Slider
+                value={app.state.settings.watermark.size}
+                min={10}
+                max={50}
+                onChange={app.actions.setWaterMarkSize}
+                labelStepSize={10}
+                disabled={app.state.running}
+              />
+            </FormGroup>
           </Appear>
         </FormGroup>
       </Card>

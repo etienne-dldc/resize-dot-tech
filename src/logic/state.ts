@@ -20,6 +20,7 @@ export type WaterMarkSettings = {
   enabled: boolean;
   text: string;
   opacity: number;
+  size: number;
 };
 
 export type StateSettings = {
@@ -48,7 +49,8 @@ const state: State = {
     watermark: {
       enabled: false,
       text: '',
-      opacity: 100,
+      opacity: 50,
+      size: 20,
     },
   },
   running: false,

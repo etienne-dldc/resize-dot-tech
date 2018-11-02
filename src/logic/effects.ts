@@ -41,6 +41,11 @@ function getImageDataURL(file: File): Promise<string> {
   });
 }
 
+function removeExtensions(name: string): string {
+  const parts = name.split('.');
+  return parts.slice(0, -1).join('.');
+}
+
 function getImageInfo(file: FileWithContent): Promise<FileWithInfo> {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -48,6 +53,7 @@ function getImageInfo(file: FileWithContent): Promise<FileWithInfo> {
     img.onload = () => {
       resolve({
         ...file,
+        name: removeExtensions(file.name),
         width: img.width,
         height: img.height,
         img,
@@ -64,7 +70,7 @@ function getNewSize(width: number, height: number, max: number): { width: number
   return { width: width * scale, height: height * scale };
 }
 
-function resize(file: FileWithInfo, settings: StateSettings): Promise<Blob> {
+function canvasWork(file: FileWithInfo, settings: StateSettings): Promise<Blob> {
   return new Promise((resolve, reject) => {
     const { height, width } = getNewSize(file.width, file.height, settings.maxSize || 1600);
     const elem = document.createElement('canvas');
@@ -73,6 +79,14 @@ function resize(file: FileWithInfo, settings: StateSettings): Promise<Blob> {
     const ctx = elem.getContext('2d') as CanvasRenderingContext2D;
     // img.width and img.height will give the original dimensions
     ctx.drawImage(file.img, 0, 0, width, height);
+    // watermark
+    if (settings.watermark.enabled) {
+      ctx.font = `${settings.watermark.size}px Roboto`;
+      ctx.fillStyle = `rgba(255, 255, 255, ${settings.watermark.opacity / 100})`;
+      ctx.textAlign = 'end';
+      ctx.textBaseline = 'bottom';
+      ctx.fillText(settings.watermark.text, width - 20, height - 20);
+    }
     ctx.canvas.toBlob(
       blob => {
         if (!blob) {
@@ -98,7 +112,7 @@ async function processImage(file: StateImage, settings: StateSettings) {
     name: file.input.name,
     size: file.input.size,
   });
-  const output = await resize(infos, settings);
+  const output = await canvasWork(infos, settings);
   return {
     infos,
     output,
@@ -125,7 +139,7 @@ export const imageTools = {
   getImageDataURL,
   getImageInfo,
   getNewSize,
-  resize,
+  canvasWork,
   processImage,
   proccessImages,
   downloadZip,

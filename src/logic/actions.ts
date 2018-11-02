@@ -28,4 +28,5 @@ export const {
   setSettingQuality,
   toggleExpandItem,
   setWaterMarkOpacity,
+  setWaterMarkSize,
 } = actionsFromMutations(mutations);
