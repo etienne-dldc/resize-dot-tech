@@ -14,9 +14,9 @@ class App extends React.PureComponent<Props> {
     const { app } = this.props;
     const hasFiles = app.state.files.length > 0;
     return (
-      <Wrapper>
+      <Wrapper className={Classes.DARK}>
         <Logo />
-        <Colums className={Classes.DARK}>
+        <Colums>
           {hasFiles && (
             <Column>
               <Settings />
