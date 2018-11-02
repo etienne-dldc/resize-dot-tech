@@ -12,7 +12,7 @@ type Props = ConnectProps & {};
 class App extends React.PureComponent<Props> {
   public render() {
     const { app } = this.props;
-    const hasFiles = true; //app.state.files.length > 0;
+    const hasFiles = app.state.files.length > 0;
     return (
       <Wrapper>
         <Logo />

@@ -36,30 +36,4 @@ class TypeSelect extends React.PureComponent<Props> {
   };
 }
 
-{
-  /* <Wrapper>
-{[OutputMimeType.jpeg, OutputMimeType.png, OutputMimeType.webp].map(k => {
-  const onClick = () => {
-    this.onTypeSelected(k);
-  };
-  const selected = k === app.state.settings.type;
-  return (
-    <HoverProvider key={k}>
-      {hoverParams => (
-        <SelectItemAnim
-          pose={
-            selected ? (hoverParams.hover ? 'hoverSelected' : 'selected') : hoverParams.hover ? 'hover' : 'init'
-          }
-          innerRef={hoverParams.ref as any}
-          onClick={onClick}
-        >
-          {typeNames[k]}
-        </SelectItemAnim>
-      )}
-    </HoverProvider>
-  );
-})}
-</Wrapper> */
-}
-
 export default connect(TypeSelect);

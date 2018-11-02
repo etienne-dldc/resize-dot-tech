@@ -1,7 +1,6 @@
 import styled from 'react-emotion';
 
 export const Wrapper = styled('div')({
-  flex: 1,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -44,6 +43,7 @@ export const Column = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'stretch',
+  flexShrink: 0,
   '& > *': {
     marginBottom: 20,
     '&:last-child': {
