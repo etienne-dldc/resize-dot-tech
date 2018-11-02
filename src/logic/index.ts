@@ -20,10 +20,7 @@ declare module 'overmind' {
   interface App extends TApp<typeof config> {}
 }
 
-const app = new Overmind(config, {
-  name: 'bulk-image-tool',
-  // devtools: false,
-});
+const app = new Overmind(config);
 
 export type ConnectProps = TConnect<typeof app>;
 
