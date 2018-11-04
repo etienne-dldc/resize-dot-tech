@@ -47,7 +47,7 @@ class App extends React.PureComponent<Props> {
           <Link href="https://twitter.com/Etienne_dot_js">@Etienne_dot_js</Link>
           {' - '}
           Code available on{' '}
-          <Link href="https://github.com/etienne-dldc/bulk-image-tool">
+          <Link href="https://github.com/etienne-dldc/resize-dot-tech">
             <Icon icon="git-repo" iconSize={15} /> Github
           </Link>
         </Footer>
