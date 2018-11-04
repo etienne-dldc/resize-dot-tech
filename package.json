@@ -2,7 +2,7 @@
   "name": "resize-dot-tech",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://resize.etienne-dot-js.com/",
+  "homepage": "https://www.resize.tech/",
   "dependencies": {
     "@blueprintjs/core": "^3.7.0",
     "color": "^3.1.0",
