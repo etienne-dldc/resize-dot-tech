@@ -57,6 +57,15 @@ export const Column = styled('div')({
 export const Footer = styled('footer')({
   color: 'white',
   padding: '2rem',
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+});
+
+export const FooterContent = styled('p')({
+  textAlign: 'center',
+  margin: '0.1em 0.7em',
 });
 
 export const Link = styled('a')({
