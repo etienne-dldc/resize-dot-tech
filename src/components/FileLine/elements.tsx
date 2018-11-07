@@ -1,6 +1,7 @@
 import styled from 'react-emotion';
 import posed from 'react-pose';
 import { Colors } from '@blueprintjs/core';
+import * as React from 'react';
 
 type ContainerProps = { isEven: boolean };
 
@@ -35,7 +36,9 @@ const ButtonWrapperStyled = styled('div')({
   padding: 5,
 });
 
-export const ButtonWrapper = posed(ButtonWrapperStyled)({
+const ButtonWrapperStyledWithRef = React.forwardRef((props, ref) => <ButtonWrapperStyled {...props} innerRef={ref} />);
+
+export const ButtonWrapper = posed(ButtonWrapperStyledWithRef)({
   show: {
     opacity: 1,
     x: 0,
