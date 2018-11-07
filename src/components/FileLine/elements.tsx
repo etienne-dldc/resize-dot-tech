@@ -39,6 +39,10 @@ const ButtonWrapperStyled = styled('div')({
 const ButtonWrapperStyledWithRef = React.forwardRef((props, ref) => <ButtonWrapperStyled {...props} innerRef={ref} />);
 
 export const ButtonWrapper = posed(ButtonWrapperStyledWithRef)({
+  init: {
+    opacity: 0,
+    x: 50,
+  },
   show: {
     opacity: 1,
     x: 0,

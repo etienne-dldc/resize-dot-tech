@@ -3,6 +3,7 @@ import { Overmind, TApp } from 'overmind';
 import * as effects from './effects';
 import * as actions from './actions';
 import state from './state';
+import { createUseOvermind } from './createUseOvermind';
 
 type Config = {
   state: typeof state;
@@ -17,7 +18,7 @@ const config: Config = {
 };
 
 declare module 'overmind' {
-  interface App extends TApp<typeof config> {}
+  interface IApp extends TApp<typeof config> {}
 }
 
 const app = new Overmind(config);
@@ -25,5 +26,6 @@ const app = new Overmind(config);
 export type ConnectProps = TConnect<typeof app>;
 
 export const connect = createConnect(app);
+export const useOvermind = createUseOvermind(app);
 
 export default app;

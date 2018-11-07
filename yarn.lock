@@ -1224,13 +1224,13 @@ acorn@^6.0.1, acorn@^6.0.2:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.0.2.tgz#6a459041c320ab17592c6317abbfdf4bbaa98ca4"
   integrity sha512-GXmKIvbrN3TV7aVqAzVFaMW8F8wzVX7voEBRO3bDA64+EX37YSayggRJP5Xig6HYHBkWKpFg9W5gg6orklubhg==
 
-action-chain@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/action-chain/-/action-chain-2.0.0.tgz#5ad45bce42bafcec547dc8e87d1a1d575e274dfb"
-  integrity sha512-Ws99PBvJuLzygiWqjxt5q5saRAeDJdfGYEcbm/6cvfBm8+Ol8e9q5Aj0reFD4QyoKAuothUmBiM8EHnN23Kkgw==
+action-chain@2.0.0-1541537634404:
+  version "2.0.0-1541537634404"
+  resolved "https://registry.yarnpkg.com/action-chain/-/action-chain-2.0.0-1541537634404.tgz#b4e9e914710465f9d3b720c287fd1ad130aa1377"
+  integrity sha512-+id386fQCe387frp9BCJwZKE0hHmSzmx+2gIOUKkKBORRVVc1keUaQPL0htCEoWyzaE2nErZrPuYlcKFveGY7g==
   dependencies:
     "@types/node" "^10.5.1"
-    betsy "1.0.1"
+    betsy "1.0.1-1541537634404"
     tslib "^1.9.3"
 
 address@1.0.3, address@^1.0.1:
@@ -1867,10 +1867,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-betsy@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/betsy/-/betsy-1.0.1.tgz#5cc94776896685850277040ad5d7f31b45269bfc"
-  integrity sha512-NctFuI8ZFrYRbd6qkMAGfw22EOYipJWTBv0SNL2SAhmcmJw/GzeXORJ58jaXmp/7WI4H8s8lJ0Eb5GIPPyn9Mw==
+betsy@1.0.1-1541537634404:
+  version "1.0.1-1541537634404"
+  resolved "https://registry.yarnpkg.com/betsy/-/betsy-1.0.1-1541537634404.tgz#67a901cca771e2c7ca502a321e7db3c2bb2f92e6"
+  integrity sha512-ukSauAEgnQQuvoMaWUZ3UVJ1C4AJI2PKsAwYv3nwytkwbNfOlXVgPkpu8QDH6tgdM9Pdf3dMrDvbCtxlpZq3Ew==
   dependencies:
     "@types/node" "^10.5.1"
     tslib "^1.9.3"
@@ -6921,25 +6921,25 @@ osenv@^0.1.4:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
-overmind-react@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/overmind-react/-/overmind-react-4.0.1.tgz#d3d730ea46d3837ccfdc6303c860c43b84a9b56e"
-  integrity sha512-A+LrbyS/UqkxxjYxokuKLAhvaVZiqVydqP2D3vY/G3MGvlM3ml6UsV49ZL4dWVrShOpCSA4HGHrQ21JX9MPR2g==
+overmind-react@5.0.0-1541537634404:
+  version "5.0.0-1541537634404"
+  resolved "https://registry.yarnpkg.com/overmind-react/-/overmind-react-5.0.0-1541537634404.tgz#f29319ed937039018fc61edfb3ded3a0b0d5c4c8"
+  integrity sha512-u7YeuWcGQf8rrXqmdFp8Ea8WAvdZx2nUHt5EKmz2oJUBA4s49O0bGHPl2XjStgPuw4oSFrtSO4ABcpwTLp5bWg==
   dependencies:
     "@types/node" "^10.5.1"
-    overmind "4.0.1"
+    overmind "5.0.0-1541537634404"
     tslib "^1.9.3"
 
-overmind@4.0.1, overmind@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/overmind/-/overmind-4.0.1.tgz#3eafc1d1957207285e3fb1c321d0f839b6273038"
-  integrity sha512-2FUEGwdFngEePFE6qQjWDQMqCj5Ca+zpMRmJ22torQVituYk7+cVCRpZUZsTl1IzhNcVrjxlMddUwgYQykN9LQ==
+overmind@5.0.0-1541537634404:
+  version "5.0.0-1541537634404"
+  resolved "https://registry.yarnpkg.com/overmind/-/overmind-5.0.0-1541537634404.tgz#e0a0e8f75f2a882491850fb786e32f13df489941"
+  integrity sha512-zDAVY4+g0N+kjZ0AlKIVMVuOR0oiLEuoIUiWLcxaumlzKmfN3uAgCCiWdJiJTUnM/NDiljKDj/00AUU4g1F1hA==
   dependencies:
     "@types/node" "^10.5.1"
-    action-chain "2.0.0"
-    betsy "1.0.1"
+    action-chain "2.0.0-1541537634404"
+    betsy "1.0.1-1541537634404"
     is-plain-object "^2.0.4"
-    proxy-state-tree "1.3.1"
+    proxy-state-tree "2.0.0-1541537634404"
     tslib "^1.9.3"
 
 p-defer@^1.0.0:
@@ -7997,10 +7997,10 @@ proxy-addr@~2.0.4:
     forwarded "~0.1.2"
     ipaddr.js "1.8.0"
 
-proxy-state-tree@1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/proxy-state-tree/-/proxy-state-tree-1.3.1.tgz#c7cb52fb5b22b4b02e05baa6222df99ee7979b7a"
-  integrity sha512-tpC+9BWpFbeNsKqqhfrfjUhdxlM5Hk37qp02ijrqQCUuysq6IY4tTbsP61rxDrVrxKFPwhdPgD0HNJqpgkn0Fg==
+proxy-state-tree@2.0.0-1541537634404:
+  version "2.0.0-1541537634404"
+  resolved "https://registry.yarnpkg.com/proxy-state-tree/-/proxy-state-tree-2.0.0-1541537634404.tgz#d06fcc9479325bc0cead1770a5c0c1f973e0d712"
+  integrity sha512-pY7U+Yo5n4HvdTcb3pldgL3u/wJ3Wxkqv5EiKxiJES6+Ul7vBpbpXd/nFau0pih6dqzpZv3oVlhAdnGBMFOnnA==
   dependencies:
     is-plain-object "^2.0.4"
 
@@ -8193,15 +8193,15 @@ react-dev-utils@^6.1.1:
     strip-ansi "4.0.0"
     text-table "0.2.0"
 
-react-dom@^16.6.1:
-  version "16.6.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.6.1.tgz#5476e08694ae504ae385a28b62ecc4fe3a29add9"
-  integrity sha512-zm+wBuEMGm009Wt1uE4Zw5KcXOW7qC4E/xW/fpJsCsbOco4U/R84u+DzzO/S4SYSdNBcqcaulcp4w3FXl8pImw==
+react-dom@16.7.0-alpha.0:
+  version "16.7.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.7.0-alpha.0.tgz#8379158d4c76d63c989f325f45dfa5762582584f"
+  integrity sha512-/XUn1ldxmoV2B7ov0rWT5LMZaaHMlF9GGLkUsmPRxmWTJwRDOuAPXidSaSlmR/VOhDSI1s+v3+KzFqhhDFJxYA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    scheduler "^0.11.0"
+    scheduler "^0.11.0-alpha.0"
 
 react-dropzone@^7.0.1:
   version "7.0.1"
@@ -8316,15 +8316,15 @@ react-transition-group@^2.2.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react@^16.6.1:
-  version "16.6.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.6.1.tgz#ee2aef4f0a09e494594882029821049772f915fe"
-  integrity sha512-OtawJThYlvRgm9BXK+xTL7BIlDx8vv21j+fbQDjRRUyok6y7NyjlweGorielTahLZHYIdKUoK2Dp9ByVWuMqxw==
+react@16.7.0-alpha.0:
+  version "16.7.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.7.0-alpha.0.tgz#e2ed4abe6f268c9b092a1d1e572953684d1783a9"
+  integrity sha512-V0za4H01aoAF0SdzahHepvfvzTQ1xxkgMX4z8uKzn+wzZAlVk0IVpleqyxZWluqmdftNedj6fIIZRO/rVYVFvQ==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    scheduler "^0.11.0"
+    scheduler "^0.11.0-alpha.0"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -8788,7 +8788,7 @@ saxes@^3.1.3:
   dependencies:
     xmlchars "^1.3.1"
 
-scheduler@^0.11.0:
+scheduler@^0.11.0-alpha.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.11.0.tgz#def1f1bfa6550cc57981a87106e65e8aea41a6b5"
   integrity sha512-MAYbBfmiEHxF0W+c4CxMpEqMYK+rYF584VP/qMKSiHM6lTkBKKYOJaDiSILpJHla6hBOsVd6GucPL46o2Uq3sg==

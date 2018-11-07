@@ -1,6 +1,6 @@
 import * as React from 'react';
 import posed, { PoseGroup } from 'react-pose';
-import { connect, ConnectProps } from '../../logic';
+import { useOvermind, ConnectProps } from '../../logic';
 
 export const Fade = posed.div({
   enter: {
@@ -11,12 +11,13 @@ export const Fade = posed.div({
   },
 });
 
-type Props = ConnectProps & {
+type Props = {
   condition: boolean;
 };
 
 const Appear: React.SFC<Props> = ({ children, condition }) => {
+  useOvermind();
   return <PoseGroup>{condition ? [<Fade key="only">{children}</Fade>] : []}</PoseGroup>;
 };
 
-export default connect(Appear);
+export default Appear;

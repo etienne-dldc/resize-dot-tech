@@ -1,31 +1,30 @@
-import { ConnectProps, connect } from '../../logic';
+import { useOvermind } from '../../logic';
 import * as React from 'react';
 import Dropzone from 'react-dropzone';
 import { DropText, Container } from './elements';
-import HoverProvider from '../HoverProvider';
-import { Button, Card, Elevation } from '@blueprintjs/core';
 
-type Props = ConnectProps;
+type Props = {};
 
-class DropArea extends React.PureComponent<Props> {
-  public render() {
-    return (
-      <Container>
-        <Dropzone style={{}} accept="image/*" onDrop={this.onDrop}>
-          <DropText>
-            Drop files here
-            <br />
-            Or click to select
-          </DropText>
-        </Dropzone>
-      </Container>
-    );
-  }
+const DropArea: React.SFC<Props> = () => {
+  const app = useOvermind();
+  const onDrop = React.useMemo(
+    () => (acceptedFiles: Array<File>, rejectedFiles: Array<File>) => {
+      console.log({ rejectedFiles, acceptedFiles });
+      app.actions.addImages(acceptedFiles);
+    },
+    []
+  );
+  return (
+    <Container>
+      <Dropzone style={{}} accept="image/*" onDrop={onDrop}>
+        <DropText>
+          Drop files here
+          <br />
+          Or click to select
+        </DropText>
+      </Dropzone>
+    </Container>
+  );
+};
 
-  private onDrop = async (acceptedFiles: Array<File>, rejectedFiles: Array<File>) => {
-    console.log({ rejectedFiles, acceptedFiles });
-    this.props.app.actions.addImages(acceptedFiles);
-  };
-}
-
-export default connect(DropArea);
+export default DropArea;
