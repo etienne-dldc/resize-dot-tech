@@ -131,7 +131,7 @@ async function downloadZip(files: Array<StateImage>, settings: StateSettings) {
   });
   zip.generateAsync({ type: 'blob' }).then(content => {
     // see FileSaver.js
-    saveAs(content, 'example.zip');
+    saveAs(content, 'resized.zip');
   });
 }
 
