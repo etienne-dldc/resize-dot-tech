@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from '../theme';
 import posed from 'react-pose';
 import { Colors } from '@blueprintjs/core';
 import * as React from 'react';

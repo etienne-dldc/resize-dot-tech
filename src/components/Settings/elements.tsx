@@ -1,5 +1,5 @@
 import { FormGroup } from '@blueprintjs/core';
-import styled from 'react-emotion';
+import styled from '../theme';
 
 export const InlineFormGroup = styled(FormGroup)({
   '& > *': {

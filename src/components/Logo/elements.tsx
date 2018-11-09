@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from '../theme';
 
 export const Wrapper = styled('svg')({
   width: '96vw',
