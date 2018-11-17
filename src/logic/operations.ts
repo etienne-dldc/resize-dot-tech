@@ -1,7 +1,7 @@
-import { Operation } from 'overmind';
+import { map, run } from 'overmind';
 import { StateImage } from './state';
 
-export const mapFileToStateImage: Operation.Map<Array<File>, Array<StateImage>> = ({ uuid, value: files }) => {
+export const mapFileToStateImage = map<Array<File>, Array<StateImage>>(({ uuid, value: files }) => {
   return files.map(
     (inputFile): StateImage => ({
       id: uuid(),
@@ -9,16 +9,16 @@ export const mapFileToStateImage: Operation.Map<Array<File>, Array<StateImage>> 
       expanded: false,
     })
   );
-};
+});
 
-export const dowloadZip: Operation.Run = ({ state, imageTools }) => {
+export const dowloadZip = run(({ state, imageTools }) => {
   return imageTools.downloadZip(state.files, state.settings);
-};
+});
 
-export const extractChecked: Operation.Map<React.MouseEvent<HTMLInputElement>, boolean> = ({ value }) => {
+export const extractChecked = map<React.MouseEvent<HTMLInputElement>, boolean>(({ value }) => {
   return (value.target as any).checked;
-};
+});
 
-export const extractValue: Operation.Map<React.ChangeEvent<HTMLInputElement>, string> = ({ value }) => {
+export const extractValue = map<React.ChangeEvent<HTMLInputElement>, string>(({ value }) => {
   return value.target.value;
-};
+});
