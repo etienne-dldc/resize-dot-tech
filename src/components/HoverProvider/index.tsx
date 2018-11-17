@@ -21,7 +21,7 @@ type State = {
 const HoverProvider: React.SFC<Props> = ({ children, onHover, debug = false }) => {
   const app = useOvermind();
   const [isHover, setHover] = React.useState(false);
-  const elRef = React.useRef<HTMLElement>();
+  const elRef = React.useRef<HTMLElement | null>(null);
   const onEnter = React.useMemo(
     () => (e: MouseEvent) => {
       setHover(true);

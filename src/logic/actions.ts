@@ -1,25 +1,25 @@
-import { Pipe, pipe, TOperator } from 'overmind';
+import { Operator, pipe, TOperator } from 'overmind';
 import { StateImage } from './state';
 import * as mutations from './mutations';
 import * as operations from './operations';
 
-export const addImages: Pipe<Array<File>, Array<StateImage>> = pipe(
+export const addImages: Operator<Array<File>, Array<StateImage>> = pipe(
   operations.mapFileToStateImage,
   mutations.addImages
 );
 
-export const processAndDowloadZip: Pipe<void, any> = pipe(
+export const processAndDowloadZip: Operator<void, any> = pipe(
   mutations.setRunning,
   operations.dowloadZip,
   mutations.setNotRunning
 );
 
-export const handleWatermarkCheckbox: Pipe<React.MouseEvent<HTMLInputElement>, boolean> = pipe(
+export const handleWatermarkCheckbox: Operator<React.MouseEvent<HTMLInputElement>, boolean> = pipe(
   operations.extractChecked,
   mutations.setWatermarkEnabled
 );
 
-export const handleWatermarkText: Pipe<React.ChangeEvent<HTMLInputElement>, string> = pipe(
+export const handleWatermarkText: Operator<React.ChangeEvent<HTMLInputElement>, string> = pipe(
   operations.extractValue,
   mutations.setWatermarkText
 );
