@@ -26,15 +26,15 @@ export const handleWatermarkText: Operator<React.ChangeEvent<HTMLInputElement>, 
 
 // Actions from mutations
 
-const pipeThemAll = <Mutations extends { [key: string]: TOperator<any, any> }>(mutations: Mutations): Mutations => {
-  return Object.keys(mutations).reduce<Mutations>(
-    (acc, name) => {
-      acc[name] = pipe(mutations[name]);
-      return acc;
-    },
-    {} as any
-  );
-};
+// const pipeThemAll = <Mutations extends { [key: string]: TOperator<any, any> }>(mutations: Mutations): Mutations => {
+//   return Object.keys(mutations).reduce<Mutations>(
+//     (acc, name) => {
+//       acc[name] = pipe(mutations[name]);
+//       return acc;
+//     },
+//     {} as any
+//   );
+// };
 
 export const {
   setSettingType,
@@ -44,4 +44,4 @@ export const {
   setWaterMarkOpacity,
   setWaterMarkSize,
   removeImage,
-} = pipeThemAll(mutations);
+} = mutations;
