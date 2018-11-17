@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { ConnectProps, connect, useOvermind } from '../../logic';
+import { ConnectProps, connect } from '../../logic';
 import posed, { PoseGroup } from 'react-pose';
 import FileLine from '../FileLine';
 import { Container } from './elements';
 import { Card, H5 } from '@blueprintjs/core';
 import DropArea from '../DropArea';
 
-type FilesBoxProps = {};
+type FilesBoxProps = ConnectProps;
 
 const ListItem = posed.div({
   init: {
@@ -23,23 +23,25 @@ const ListItem = posed.div({
   },
 });
 
-const Files: React.SFC<FilesBoxProps> = ({}) => {
-  const app = useOvermind();
-  return (
-    <Card>
-      <H5>Files</H5>
-      <Container>
-        <PoseGroup>
-          {app.state.files.map((file, index) => (
-            <ListItem key={file.id}>
-              <FileLine fileId={file.id} fileIndex={index} />
-            </ListItem>
-          ))}
-        </PoseGroup>
-      </Container>
-      <DropArea />
-    </Card>
-  );
-};
+class Files extends React.PureComponent<FilesBoxProps> {
+  public render() {
+    const { app } = this.props;
+    return (
+      <Card>
+        <H5>Files</H5>
+        <Container>
+          <PoseGroup>
+            {app.state.files.map((file, index) => (
+              <ListItem key={file.id}>
+                <FileLine file={file} fileIndex={index} />
+              </ListItem>
+            ))}
+          </PoseGroup>
+        </Container>
+        <DropArea />
+      </Card>
+    );
+  }
+}
 
-export default Files;
+export default connect(Files);

@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from '../theme';
 import { Colors } from '@blueprintjs/core';
 
 export const Container = styled('div')({

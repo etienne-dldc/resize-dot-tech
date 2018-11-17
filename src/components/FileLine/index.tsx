@@ -1,58 +1,45 @@
 import * as React from 'react';
-import { useOvermind } from '../../logic';
+import { ConnectProps, connect } from '../../logic';
 import { Container, Name, Details, Header, ButtonWrapper } from './elements';
 import HoverProvider from '../HoverProvider';
-import { StateImage, StateImageId } from '../../logic/state';
+import { StateImage } from '../../logic/state';
 import { Button } from '@blueprintjs/core';
 
-type FileLineProps = { fileId: StateImageId; fileIndex: number };
+type FileLineProps = ConnectProps & { file: StateImage; fileIndex: number };
 
-const FileLine: React.SFC<FileLineProps> = ({ fileId, fileIndex }) => {
-  const app = useOvermind();
-  const file = app.state.files[fileIndex];
-
-  const removeImage = React.useMemo(
-    () => (e: React.MouseEvent) => {
-      app.actions.removeImage(file.id);
-      e.stopPropagation();
-    },
-    [fileId, fileIndex]
-  );
-
-  const toggle = React.useMemo(
-    () => (e: React.MouseEvent) => {
-      app.actions.toggleExpandItem(file.id);
-      e.stopPropagation();
-    },
-    [file]
-  );
-
-  if (!file) {
-    console.log('no file ?');
-    return null;
+class FileLine extends React.PureComponent<FileLineProps> {
+  public render() {
+    const { file, fileIndex } = this.props;
+    return (
+      <Container isEven={fileIndex % 2 === 0}>
+        <HoverProvider>
+          {hoverParams => (
+            <Header onClick={this.toggle} innerRef={hoverParams.ref}>
+              <Name>{file.input.name}</Name>
+              <ButtonWrapper pose={hoverParams.hover ? 'show' : 'hide'}>
+                <Button icon="trash" intent="danger" onClick={this.removeImage}>
+                  Delete
+                </Button>
+              </ButtonWrapper>
+            </Header>
+          )}
+        </HoverProvider>
+        {file.expanded && (
+          <Details>
+            <p>Yolo</p>
+          </Details>
+        )}
+      </Container>
+    );
   }
 
-  return (
-    <Container isEven={fileIndex % 2 === 0}>
-      <HoverProvider>
-        {hoverParams => (
-          <Header onClick={toggle} innerRef={hoverParams.ref}>
-            <Name>{file.input.name}</Name>
-            <ButtonWrapper pose={hoverParams.hover ? 'show' : 'hide'}>
-              <Button icon="trash" intent="danger" onClick={removeImage}>
-                Delete
-              </Button>
-            </ButtonWrapper>
-          </Header>
-        )}
-      </HoverProvider>
-      {file.expanded && (
-        <Details>
-          <p>Yolo</p>
-        </Details>
-      )}
-    </Container>
-  );
-};
+  private removeImage = () => {
+    this.props.app.actions.removeImage(this.props.file.id);
+  };
 
-export default FileLine;
+  private toggle = () => {
+    // this.props.app.actions.toggleExpandItem(this.props.file.id);
+  };
+}
+
+export default connect(FileLine);

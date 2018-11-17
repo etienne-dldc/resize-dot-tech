@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from '../theme';
 
 export const Container = styled('div')({
   display: 'flex',

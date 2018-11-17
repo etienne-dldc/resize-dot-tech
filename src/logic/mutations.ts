@@ -3,11 +3,8 @@ import { StateImageId, StateImage, OutputMimeType } from './state';
 
 export const removeImage = mutate<StateImageId>(({ state, value: fileId }) => {
   const fileIndex = state.files.findIndex(f => f.id === fileId);
-  // console.log(state.files[0] === state.files[0]);
 
-  if (fileIndex) {
-    // console.log({ file, fileId, index: state.files.indexOf(file) });
-    // state.files.splice(state.files.indexOf(state.files[0]), 1);
+  if (fileIndex !== undefined) {
     state.files.splice(fileIndex, 1);
   }
 });
