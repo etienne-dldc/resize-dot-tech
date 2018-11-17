@@ -1,4 +1,4 @@
-import { map, run } from 'overmind';
+import { map } from 'overmind';
 import { StateImage } from './state';
 
 export const mapFileToStateImage = map<Array<File>, Array<StateImage>>(({ uuid, value: files }) => {
@@ -11,7 +11,7 @@ export const mapFileToStateImage = map<Array<File>, Array<StateImage>>(({ uuid, 
   );
 });
 
-export const dowloadZip = run(({ state, imageTools }) => {
+export const dowloadZip = map<any, any>(({ state, imageTools }) => {
   return imageTools.downloadZip(state.files, state.settings);
 });
 

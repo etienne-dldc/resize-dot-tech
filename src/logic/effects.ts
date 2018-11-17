@@ -129,7 +129,7 @@ async function downloadZip(files: Array<StateImage>, settings: StateSettings) {
   proccessed.forEach(file => {
     zip.file(file.infos.name + '.' + extensions[settings.type], file.output);
   });
-  zip.generateAsync({ type: 'blob' }).then(content => {
+  return zip.generateAsync({ type: 'blob' }).then(content => {
     // see FileSaver.js
     saveAs(content, 'resized.zip');
   });
