@@ -48,7 +48,7 @@ class Settings extends React.PureComponent<Props> {
           <Appear condition={supportQuality}>
             <InlineFormGroup inline={true} label="Quality">
               <Popover>
-                <Button>{app.state.settings.quality}%</Button>
+                <Button disabled={app.state.running}>{app.state.settings.quality}%</Button>
                 <PopoverContainer>
                   <Slider
                     value={app.state.settings.quality}
@@ -84,7 +84,7 @@ class Settings extends React.PureComponent<Props> {
             </InlineFormGroup>
             <InlineFormGroup inline={true} label="Opacity">
               <Popover>
-                <Button>{app.state.settings.watermark.opacity}%</Button>
+                <Button disabled={app.state.running}>{app.state.settings.watermark.opacity}%</Button>
                 <PopoverContainer>
                   <Slider
                     value={app.state.settings.watermark.opacity}
@@ -99,7 +99,7 @@ class Settings extends React.PureComponent<Props> {
             </InlineFormGroup>
             <InlineFormGroup inline={true} label="Size">
               <Popover>
-                <Button>
+                <Button disabled={app.state.running}>
                   {app.state.settings.watermark.size}
                   px
                 </Button>
