@@ -15,7 +15,7 @@ type Props = ConnectProps & {
   condition: boolean;
 };
 
-const Appear: React.SFC<Props> = ({ children, condition }) => {
+const Appear: React.FunctionComponent<Props> = ({ children, condition }) => {
   return <PoseGroup>{condition ? [<Fade key="only">{children}</Fade>] : []}</PoseGroup>;
 };
 
