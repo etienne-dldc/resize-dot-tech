@@ -1,5 +1,5 @@
 import { TConnect, createConnect, createHook } from 'overmind-react';
-import { Overmind, TApp } from 'overmind';
+import { Overmind, TConfig } from 'overmind';
 import * as effects from './effects';
 import * as actions from './actions';
 import state from './state';
@@ -17,7 +17,7 @@ const config: Config = {
 };
 
 declare module 'overmind' {
-  interface IApp extends TApp<typeof config> {}
+  interface IConfig extends TConfig<typeof config> {}
 }
 
 const app = new Overmind(config);
