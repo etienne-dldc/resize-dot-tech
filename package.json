@@ -26,7 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "typecheck": "tsc --noEmit -p ./tsconfig.json",
-    "deploy": "yarn build && tar -cvf ./deploy.tar --exclude='*.map' ./captain-definition ./build/* && npx captainduckduck deploy -t ./deploy.tar"
+    "deploy": "yarn build && tar -cvf ./deploy.tar --exclude='*.map' ./captain-definition ./build/* && npx caprover deploy -t ./deploy.tar"
   },
   "devDependencies": {
     "@types/color": "^3.0.0",
