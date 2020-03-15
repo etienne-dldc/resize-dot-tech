@@ -1,9 +1,10 @@
-import styledAny, { CreateStyled } from 'react-emotion';
-import { ThemeProvider as AnyThemeProvider, ThemeProviderComponent } from 'emotion-theming';
+import styledAny, { CreateStyled } from '@emotion/styled';
+import { ThemeProvider as AnyThemeProvider, ThemeProviderProps } from 'emotion-theming';
+import React from 'react';
 
 export const theme = {
   color: {},
-  fonts: {},
+  fonts: {}
 };
 
 type Theme = typeof theme;
@@ -14,6 +15,6 @@ export type ThemeProps = {
 
 const styled: CreateStyled<Theme> = styledAny;
 
-export const ThemeProvider = AnyThemeProvider as ThemeProviderComponent<Theme>;
+export const ThemeProvider = AnyThemeProvider as React.FC<ThemeProviderProps<Theme>>;
 
 export default styled;

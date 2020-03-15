@@ -20,11 +20,11 @@ export const Container = styled('div')({
     borderWidth: 1,
     flex: 1,
     borderStyle: 'dashed',
-    flexDirection: 'column',
-  },
+    flexDirection: 'column'
+  }
 });
 
 export const DropText = styled('p')({
   margin: 0,
-  textAlign: 'center',
+  textAlign: 'center'
 });

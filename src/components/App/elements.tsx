@@ -6,7 +6,7 @@ export const Wrapper = styled('div')({
   flexDirection: 'column',
   alignItems: 'center',
   alignSelf: 'stretch',
-  width: '100%',
+  width: '100%'
 });
 
 export const Colums = styled('div')({
@@ -22,8 +22,8 @@ export const Colums = styled('div')({
     maxWidth: 500,
     marginRight: 20,
     '&:last-child': {
-      marginRight: 0,
-    },
+      marginRight: 0
+    }
   },
   '@media (max-width: 800px)': {
     flexDirection: 'column',
@@ -35,10 +35,10 @@ export const Colums = styled('div')({
       marginRight: 0,
       marginBottom: 20,
       '&:last-child': {
-        marginBottom: 0,
-      },
-    },
-  },
+        marginBottom: 0
+      }
+    }
+  }
 });
 
 export const Column = styled('div')({
@@ -49,9 +49,9 @@ export const Column = styled('div')({
   '& > *': {
     marginBottom: 20,
     '&:last-child': {
-      marginBottom: 0,
-    },
-  },
+      marginBottom: 0
+    }
+  }
 });
 
 export const Footer = styled('footer')({
@@ -60,18 +60,18 @@ export const Footer = styled('footer')({
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
-  justifyContent: 'center',
+  justifyContent: 'center'
 });
 
 export const FooterContent = styled('p')({
   textAlign: 'center',
-  margin: '0.1em 0.7em',
+  margin: '0.1em 0.7em'
 });
 
 export const Link = styled('a')({
   cursor: 'pointer',
   color: Colors.BLUE4,
   '&:active': {
-    color: Colors.BLUE5,
-  },
+    color: Colors.BLUE5
+  }
 });

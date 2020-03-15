@@ -1,31 +1,28 @@
-import { ConnectProps, connect } from '../../logic';
-import * as React from 'react';
+import React from 'react';
 import Dropzone from 'react-dropzone';
 import { DropText, Container } from './elements';
-import HoverProvider from '../HoverProvider';
-import { Button, Card, Elevation } from '@blueprintjs/core';
+import { useSelector } from '../../select';
 
-type Props = ConnectProps;
+export const DropArea: React.FC = React.memo(() => {
+  const addImages = useSelector(s => s.addImage);
 
-class DropArea extends React.PureComponent<Props> {
-  public render() {
-    return (
-      <Container>
-        <Dropzone style={{}} accept="image/*" onDrop={this.onDrop}>
-          <DropText>
-            Drop files here
-            <br />
-            Or click to select
-          </DropText>
-        </Dropzone>
-      </Container>
-    );
-  }
+  const onDrop = React.useCallback(
+    async (acceptedFiles: Array<File>, rejectedFiles: Array<File>) => {
+      console.log({ rejectedFiles, acceptedFiles });
+      addImages(acceptedFiles);
+    },
+    [addImages]
+  );
 
-  private onDrop = async (acceptedFiles: Array<File>, rejectedFiles: Array<File>) => {
-    console.log({ rejectedFiles, acceptedFiles });
-    this.props.app.actions.addImages(acceptedFiles);
-  };
-}
-
-export default connect(DropArea);
+  return (
+    <Container>
+      <Dropzone style={{}} accept="image/*" onDrop={onDrop}>
+        <DropText>
+          Drop files here
+          <br />
+          Or click to select
+        </DropText>
+      </Dropzone>
+    </Container>
+  );
+});

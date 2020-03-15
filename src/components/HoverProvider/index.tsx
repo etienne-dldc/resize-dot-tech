@@ -1,79 +1,58 @@
-import * as React from 'react';
-import { ConnectProps, connect } from '../../logic';
+import React from 'react';
 
 type Coords = [number | null, number | null];
 
 type Params = {
   hover: boolean;
   enterCoords: Coords;
-  ref: React.Ref<HTMLElement>;
+  ref: React.Ref<HTMLElement | undefined>;
 };
 
 type ExternalProps = {
-  children: (params: Params) => React.ReactNode;
+  children: (params: Params) => React.ReactElement | null;
   debug?: boolean;
   onHover?: (event: MouseEvent, enterCoords: Coords) => void;
 };
 
-type Props = ConnectProps & ExternalProps;
+type Props = ExternalProps;
 
-type State = {
-  hover: boolean;
-  enterCoords: Coords;
-};
+export const HoverProvider = React.memo<Props>(({ children, debug = false, onHover }) => {
+  const elRef = React.useRef<HTMLElement>();
+  const onHoverRef = React.useRef(onHover);
+  onHoverRef.current = onHover;
 
-class HoverProvider extends React.PureComponent<Props, State> {
-  private elRef = React.createRef<HTMLElement>();
-  private registered: boolean = false;
+  const [hover, setHover] = React.useState(false);
+  const [enterCoords, setEnterCoords] = React.useState<Coords>([null, null]);
 
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      hover: false,
-      enterCoords: [null, null],
-    };
-  }
-
-  public componentDidMount() {
-    this.register();
-  }
-
-  public componentWillUnmount() {
-    if (this.elRef.current) {
-      this.elRef.current.removeEventListener('mouseenter', this.onEnter);
-      this.elRef.current.removeEventListener('mouseleave', this.onLeave);
-    } else {
-      console.warn('Did you forgot to pass HoverProvider ref ?');
-    }
-  }
-
-  public render() {
-    const { debug = false } = this.props;
-    return this.props.children({
-      hover: debug ? true : this.state.hover,
-      ref: this.elRef,
-      enterCoords: this.state.enterCoords,
-    });
-  }
-
-  private register = () => {
-    if (this.registered === false && this.elRef.current) {
-      this.elRef.current.addEventListener('mouseenter', this.onEnter);
-      this.elRef.current.addEventListener('mouseleave', this.onLeave);
-    }
-  };
-
-  private onEnter = (e: MouseEvent) => {
+  const onEnter = React.useCallback((e: MouseEvent) => {
     const coords: Coords = [e.offsetX, e.offsetY];
-    this.setState({ hover: true, enterCoords: coords });
-    if (this.props.onHover) {
-      this.props.onHover(e, coords);
+    setHover(true);
+    setEnterCoords(coords);
+    if (onHoverRef.current) {
+      onHoverRef.current(e, coords);
     }
-  };
+  }, []);
 
-  private onLeave = (e: MouseEvent) => {
-    this.setState({ hover: false, enterCoords: [e.offsetX, e.offsetY] });
-  };
-}
+  const onLeave = React.useCallback((e: MouseEvent) => {
+    setHover(false);
+    setEnterCoords([e.offsetX, e.offsetY]);
+  }, []);
 
-export default connect<Props>(HoverProvider);
+  React.useEffect(() => {
+    const el = elRef.current;
+    if (el) {
+      el.addEventListener('mouseenter', onEnter);
+      el.addEventListener('mouseleave', onLeave);
+      return () => {
+        el.removeEventListener('mouseenter', onEnter);
+        el.removeEventListener('mouseleave', onLeave);
+      };
+    }
+  }, [onEnter, onLeave]);
+
+  return children({
+    hover: debug ? true : hover,
+    ref: elRef,
+    enterCoords: enterCoords
+  });
+});

@@ -1,11 +1,8 @@
-import * as createUuid from 'uuid/v4';
-import { StateImage, StateSettings, OutputMimeType } from './state';
-import * as saveAsFunction from 'file-saver';
+import FileSaver from 'file-saver';
 import JSZip from 'jszip';
-
-export const uuid: () => string = createUuid as any;
-
-export const dowloadFile = saveAsFunction;
+import { OutputMimeType } from '../store/types';
+import { StateSettings } from '../store/SettingsStore';
+import { StateImage } from '../store/AppStore';
 
 interface FileWithContent {
   dataURL: string;
@@ -22,7 +19,7 @@ interface FileWithInfo extends FileWithContent {
 const extensions: { [K in OutputMimeType]: string } = {
   [OutputMimeType.jpeg]: 'jpg',
   [OutputMimeType.png]: 'png',
-  [OutputMimeType.webp]: 'webp',
+  [OutputMimeType.webp]: 'webp'
 };
 
 function getImageDataURL(file: File): Promise<string> {
@@ -56,7 +53,7 @@ function getImageInfo(file: FileWithContent): Promise<FileWithInfo> {
         name: removeExtensions(file.name),
         width: img.width,
         height: img.height,
-        img,
+        img
       });
     };
   });
@@ -95,7 +92,7 @@ function canvasWork(file: FileWithInfo, settings: StateSettings): Promise<Blob> 
         }
         const output = new File([blob], file.name, {
           type: settings.type,
-          lastModified: Date.now(),
+          lastModified: Date.now()
         });
         resolve(output);
       },
@@ -110,12 +107,12 @@ async function processImage(file: StateImage, settings: StateSettings) {
   const infos = await getImageInfo({
     dataURL: content,
     name: file.input.name,
-    size: file.input.size,
+    size: file.input.size
   });
   const output = await canvasWork(infos, settings);
   return {
     infos,
-    output,
+    output
   };
 }
 
@@ -131,16 +128,16 @@ async function downloadZip(files: Array<StateImage>, settings: StateSettings) {
   });
   return zip.generateAsync({ type: 'blob' }).then(content => {
     // see FileSaver.js
-    saveAs(content, 'resized.zip');
+    FileSaver.saveAs(content, 'resized.zip');
   });
 }
 
-export const imageTools = {
+export const ImageTools = {
   getImageDataURL,
   getImageInfo,
   getNewSize,
   canvasWork,
   processImage,
   proccessImages,
-  downloadZip,
+  downloadZip
 };
