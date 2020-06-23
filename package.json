@@ -10,14 +10,14 @@
     "@blueprintjs/core": "^3.28.2",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
-    "@types/rc-slider": "^8.6.0",
+    "@types/rc-slider": "^8.6.6",
     "color": "^3.1.2",
     "democrat": "^3.0.0",
     "emotion": "^10.0.27",
     "emotion-theming": "^10.0.27",
     "file-saver": "^2.0.2",
-    "immer": "^7.0.0",
-    "jszip": "^3.4.0",
+    "immer": "^7.0.4",
+    "jszip": "^3.5.0",
     "normalize.css": "^8.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -25,7 +25,7 @@
     "react-electors": "^1.1.0",
     "react-pose": "^4.0.10",
     "react-scripts": "^3.4.1",
-    "uuid": "^8.1.0"
+    "uuid": "^8.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,7 +40,7 @@
     "@types/jest": "^26.0.0",
     "@types/jszip": "^3.4.1",
     "@types/node": "^14.0.13",
-    "@types/react": "^16.9.36",
+    "@types/react": "^16.9.38",
     "@types/react-dom": "^16.9.8",
     "@types/uuid": "^8.0.0",
     "typescript": "^3.9.5"
