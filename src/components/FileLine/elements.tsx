@@ -1,6 +1,6 @@
-import styled from '../theme';
 import posed from 'react-pose';
 import { Colors } from '@blueprintjs/core';
+import styled from '@emotion/styled';
 
 type ContainerProps = { isEven: boolean };
 
@@ -13,13 +13,13 @@ export const Container = styled('div')<ContainerProps>(
     margin: '2px 0',
     transitionDuration: '300ms',
     ':hover': {
-      background: Colors.DARK_GRAY5
-    }
+      background: Colors.DARK_GRAY5,
+    },
   },
   (props: ContainerProps) =>
     props.isEven
       ? {
-          background: Colors.DARK_GRAY5
+          background: Colors.DARK_GRAY5,
         }
       : {}
 );
@@ -32,22 +32,22 @@ const ButtonWrapperStyled = styled('div')({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  padding: 5
+  padding: 5,
 });
 
 export const ButtonWrapper = posed(ButtonWrapperStyled)({
   init: {
     opacity: 0,
-    x: 50
+    x: 50,
   },
   show: {
     opacity: 1,
-    x: 0
+    x: 0,
   },
   hide: {
     opacity: 0,
-    x: 50
-  }
+    x: 50,
+  },
 });
 
 export const Header = styled('div')({
@@ -55,17 +55,17 @@ export const Header = styled('div')({
   flexDirection: 'row',
   alignItems: 'center',
   minHeight: 40,
-  position: 'relative'
+  position: 'relative',
 });
 
 export const Details = styled('div')({
   display: 'flex',
   flexDirection: 'row',
-  alignItems: 'center'
+  alignItems: 'center',
 });
 
 export const Name = styled('p')({
   flex: 1,
   margin: 0,
-  padding: '0.8rem 1rem'
+  padding: '0.8rem 1rem',
 });

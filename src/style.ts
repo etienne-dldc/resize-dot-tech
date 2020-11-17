@@ -1,5 +1,5 @@
-import { injectGlobal } from 'emotion';
 import { Colors } from '@blueprintjs/core';
+import { injectGlobal } from '@emotion/css';
 
 // tslint:disable-next-line:no-unused-expression
 injectGlobal`

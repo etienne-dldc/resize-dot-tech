@@ -1,5 +1,5 @@
-import styled from '../theme';
 import { Colors } from '@blueprintjs/core';
+import styled from '@emotion/styled';
 
 export const Container = styled('div')({
   display: 'flex',
@@ -20,11 +20,11 @@ export const Container = styled('div')({
     borderWidth: 1,
     flex: 1,
     borderStyle: 'dashed',
-    flexDirection: 'column'
-  }
+    flexDirection: 'column',
+  },
 });
 
 export const DropText = styled('p')({
   margin: 0,
-  textAlign: 'center'
+  textAlign: 'center',
 });

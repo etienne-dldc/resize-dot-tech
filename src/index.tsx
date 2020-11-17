@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import './style';
 import store from './store';
+import './style';
 
 import 'normalize.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
@@ -24,5 +24,5 @@ serviceWorker.register({
   },
   onUpdate: () => {
     console.log('Ready to update, close the tab and re-open it to update');
-  }
+  },
 });
