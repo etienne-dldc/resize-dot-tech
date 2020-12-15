@@ -1,8 +1,9 @@
+import './style';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './serviceWorkerRegistration';
 import store from './store';
-import './style';
+import reportWebVitals from './reportWebVitals';
 
 import 'normalize.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
@@ -26,3 +27,5 @@ serviceWorker.register({
     console.log('Ready to update, close the tab and re-open it to update');
   },
 });
+
+reportWebVitals();
