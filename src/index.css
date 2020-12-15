@@ -1,8 +1,3 @@
-import { Colors } from '@blueprintjs/core';
-import { injectGlobal } from '@emotion/css';
-
-// tslint:disable-next-line:no-unused-expression
-injectGlobal`
 html,
 body {
   height: 100%;
@@ -25,12 +20,11 @@ body {
 
   font-size: 1.6em;
   font-weight: 300;
-  letter-spacing: .01em;
+  letter-spacing: 0.01em;
   line-height: 1.6;
 
   font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   color: #424242;
-  background-color: ${Colors.DARK_GRAY3};
 }
 
 /* root */
@@ -40,4 +34,3 @@ body {
   display: flex;
   justify-content: center;
 }
-`;
