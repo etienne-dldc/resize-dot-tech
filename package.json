@@ -32,7 +32,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "typecheck": "tsc --noEmit",
-    "deploy": "yarn build && tar -cvf ./deploy.tar --exclude='*.map' ./captain-definition ./build/* && npx caprover deploy -t ./deploy.tar"
+    "deploy": "yarn build && tar -cvf ./deploy.tar ./captain-definition ./build/* && npx caprover deploy -t ./deploy.tar"
   },
   "devDependencies": {
     "@types/color": "^3.0.1",
