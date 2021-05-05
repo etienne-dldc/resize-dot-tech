@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'democrat';
+import { useState, useMemo, useCallback, createFactory } from 'democrat';
 import { OutputMimeType, WaterMarkSettings } from './types';
 import produce, { Draft } from 'immer';
 
@@ -9,7 +9,7 @@ export type StateSettings = {
   watermark: WaterMarkSettings;
 };
 
-export const SettingsStore = () => {
+export const SettingsStore = createFactory(() => {
   const [settings, setSettings] = useState<StateSettings>({
     type: OutputMimeType.jpeg,
     quality: 90,
@@ -18,17 +18,17 @@ export const SettingsStore = () => {
       enabled: false,
       text: '',
       opacity: 50,
-      size: 20
-    }
+      size: 20,
+    },
   });
 
   const immerSetSettings = useCallback((updater: (draft: Draft<StateSettings>) => void) => {
-    setSettings(prev => produce(prev, updater));
+    setSettings((prev) => produce(prev, updater));
   }, []);
 
   const setWatermarkEnabled = useCallback(
     (value: boolean) => {
-      immerSetSettings(prev => {
+      immerSetSettings((prev) => {
         prev.watermark.enabled = value;
       });
     },
@@ -37,7 +37,7 @@ export const SettingsStore = () => {
 
   const setWatermarkText = useCallback(
     (value: string) => {
-      immerSetSettings(prev => {
+      immerSetSettings((prev) => {
         prev.watermark.text = value;
       });
     },
@@ -46,7 +46,7 @@ export const SettingsStore = () => {
 
   const setWaterMarkOpacity = useCallback(
     (value: number) => {
-      immerSetSettings(prev => {
+      immerSetSettings((prev) => {
         prev.watermark.opacity = value;
       });
     },
@@ -55,7 +55,7 @@ export const SettingsStore = () => {
 
   const setWaterMarkSize = useCallback(
     (value: number) => {
-      immerSetSettings(prev => {
+      immerSetSettings((prev) => {
         prev.watermark.size = value;
       });
     },
@@ -64,7 +64,7 @@ export const SettingsStore = () => {
 
   const setSettingType = useCallback(
     (value: OutputMimeType) => {
-      immerSetSettings(prev => {
+      immerSetSettings((prev) => {
         prev.type = value;
       });
     },
@@ -73,7 +73,7 @@ export const SettingsStore = () => {
 
   const setSettingQuality = useCallback(
     (value: number) => {
-      immerSetSettings(prev => {
+      immerSetSettings((prev) => {
         prev.quality = value;
       });
     },
@@ -82,7 +82,7 @@ export const SettingsStore = () => {
 
   const setSettingMaxSize = useCallback(
     (value: number) => {
-      immerSetSettings(prev => {
+      immerSetSettings((prev) => {
         prev.maxSize = value;
       });
     },
@@ -98,7 +98,7 @@ export const SettingsStore = () => {
       setWaterMarkSize,
       setSettingType,
       setSettingQuality,
-      setSettingMaxSize
+      setSettingMaxSize,
     }),
     [
       settings,
@@ -108,7 +108,7 @@ export const SettingsStore = () => {
       setWaterMarkSize,
       setSettingType,
       setSettingQuality,
-      setSettingMaxSize
+      setSettingMaxSize,
     ]
   );
-};
+});

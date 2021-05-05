@@ -1,4 +1,4 @@
-import { useState, useChildren, createElement, useCallback } from 'democrat';
+import { useState, useChildren, useCallback, createFactory } from 'democrat';
 import { useShallowMemo } from './useShallowMemo';
 import { SettingsStore } from './SettingsStore';
 import { v4 as uuid } from 'uuid';
@@ -12,10 +12,12 @@ export type StateImage = {
   input: File;
 };
 
-export const AppStore = () => {
+export type AppState = ReturnType<typeof AppStore['Component']>;
+
+export const AppStore = createFactory(() => {
   const [files, setFiles] = useState<Array<StateImage>>([]);
   const [running, setRunning] = useState(false);
-  const settings = useChildren(createElement(SettingsStore));
+  const settings = useChildren(SettingsStore.createElement());
 
   const processAndDowloadZip = useCallback(async () => {
     setRunning(true);
@@ -28,15 +30,15 @@ export const AppStore = () => {
       (inputFile): StateImage => ({
         id: uuid(),
         input: inputFile,
-        expanded: false
+        expanded: false,
       })
     );
-    setFiles(prev => [...prev, ...stateFiles]);
+    setFiles((prev) => [...prev, ...stateFiles]);
   }, []);
 
   const removeImage = useCallback((imageId: string) => {
-    setFiles(files => {
-      return files.filter(f => f.id !== imageId);
+    setFiles((files) => {
+      return files.filter((f) => f.id !== imageId);
     });
   }, []);
 
@@ -46,6 +48,6 @@ export const AppStore = () => {
     running,
     processAndDowloadZip,
     addImage,
-    removeImage
+    removeImage,
   });
-};
+});
