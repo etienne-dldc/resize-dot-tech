@@ -15,7 +15,7 @@
     "color": "^4.0.1",
     "democrat": "^4.0.0-7",
     "file-saver": "^2.0.5",
-    "immer": "^9.0.5",
+    "immer": "^9.0.6",
     "jszip": "^3.7.1",
     "normalize.css": "^8.0.1",
     "react": "17.0.2",
