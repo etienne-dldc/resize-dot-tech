@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import React from 'react';
 
 export function useShallowMemo<T extends { [key: string]: any }>(obj: T): T {
   const keys = Array.from(Object.keys(obj))
@@ -9,7 +9,7 @@ export function useShallowMemo<T extends { [key: string]: any }>(obj: T): T {
       return acc;
     }, []);
 
-  return useMemo(
+  return React.useMemo(
     () => obj,
     // eslint-disable-next-line react-hooks/exhaustive-deps
     keys
