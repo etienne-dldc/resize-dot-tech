@@ -12,7 +12,6 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN pnpm run build
 
 FROM caddy:2-alpine AS runtime
@@ -20,7 +19,7 @@ FROM caddy:2-alpine AS runtime
 WORKDIR /srv
 
 COPY Caddyfile /etc/caddy/Caddyfile
-COPY --from=builder /app/build /srv
+COPY --from=builder /app/dist /srv
 
 EXPOSE 80
 
